@@ -1,0 +1,7 @@
+{
+  "name": "smeraLoan",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
