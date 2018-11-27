@@ -1,0 +1,26 @@
+<ion-content>
+  <ion-grid class="content">
+    <ion-row>
+      <ion-col>
+        <h6>Please register using email Address and mobile number</h6>
+      </ion-col>
+    </ion-row>
+    
+    
+          <form [formGroup]="register" (ngSubmit)="doRegister()">
+            
+              <ion-item>
+                <ion-input type="text" placeholder="Type email address here" formControlName="email"></ion-input>
+              </ion-item>
+              <!-- <ion-item *ngIf="register.controls['email'].errors?.required && register.controls['email'].touched">
+                <p>Email is required</p>
+              </ion-item> -->
+              <ion-item>
+                <ion-input formControlName="mobile" placeholder="Enter mobile number here" type="text"></ion-input>
+              </ion-item>
+            
+            <button ion-button [disabled]="!register.valid" type="submit" float-right ion-button round outline small>NEXT</button>
+            
+          </form>
+  </ion-grid>
+</ion-content>
