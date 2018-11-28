@@ -16,6 +16,7 @@ import { LastAnswerPage } from '../pages/last-answer/last-answer';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AndroidFullScreen } from '@ionic-native/android-full-screen';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AndroidFullScreen } from '@ionic-native/android-full-screen';
     StatusBar,
     SplashScreen,
     AndroidFullScreen,
+    NativePageTransitions,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
