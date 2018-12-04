@@ -20,13 +20,13 @@
             <ion-input type="text" placeholder="Bank Name" formControlName="bank_name"></ion-input>
         </ion-item>
         <ion-item>
-            <button ion-button ion-button round small (click)="noLoan()">No, i do not have any existing loan</button>
+            <button class="animated fadeInRight" ion-button ion-button round small (click)="noLoan()">No, i do not have any existing loan</button>
         </ion-item>
         <ion-item>
-            <button ion-button ion-button round small [disabled]="!existingloan.valid" type="submit">Click here to add another loan facility</button>
+            <button class="animated fadeInRight" ion-button ion-button round small [disabled]="!existingloan.valid" type="submit">Click here to add another loan facility</button>
         </ion-item>        
   
-        <button ion-button [disabled]="!existingloan.valid" type="submit" float-right ion-button round outline small>DONE</button>
+        <button class="animated fadeInRight" ion-button [disabled]="!existingloan.valid" type="submit" float-right ion-button round outline small>DONE</button>
   
       </form>
     </ion-grid>

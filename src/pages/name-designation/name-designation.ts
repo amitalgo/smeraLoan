@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 import { CompanynamePage } from '../companyname/companyname';
 /**
@@ -20,7 +20,7 @@ export class NameDesignationPage {
   name: AbstractControl;
   designation: AbstractControl;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,) {
+  constructor(public navCtrl: NavController, private menuCtrl:MenuController ,public navParams: NavParams, private formBuilder: FormBuilder,) {
     this.namedes = this.formBuilder.group({
       name: ['', Validators.required],
       designation: ['', Validators.required],
@@ -28,6 +28,10 @@ export class NameDesignationPage {
 
     this.name = this.namedes.controls['name'];
     this.designation = this.namedes.controls['designation'];
+  }
+
+  ionViewWillEnter () {
+    this.menuCtrl.enable (true, "myMenu");
   }
 
   doNameDes(){

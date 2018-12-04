@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,MenuController } from 'ionic-angular';
 import { AndroidFullScreen } from '@ionic-native/android-full-screen';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
 
@@ -15,11 +15,9 @@ export class HomePage {
   public effect : any;
   public cssClass: string;
 
-  constructor(public navCtrl: NavController, private androidFullScreen: AndroidFullScreen, private nativePageTransitions: NativePageTransitions) {
+  constructor(public navCtrl: NavController, public menuCtrl: MenuController, private nativePageTransitions: NativePageTransitions) {
 
-    this.androidFullScreen.isImmersiveModeSupported()
-      .then(() => console.log('Immersive mode supported'))
-      .catch(err => console.log(err));      
+    this.menuCtrl.enable(false, 'myMenu');    
   }
 
   applyClassBySelection(effect : string): void{
