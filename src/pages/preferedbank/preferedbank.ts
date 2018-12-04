@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { OwnhousePage } from '../ownhouse/ownhouse';
 
 /**
  * Generated class for the PreferedbankPage page.
@@ -20,6 +21,11 @@ export class PreferedbankPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PreferedbankPage');
+  }
+
+  doProceed(){
+    console.log("Prefered Bank");
+    this.navCtrl.setRoot(OwnhousePage);
   }
 
 }

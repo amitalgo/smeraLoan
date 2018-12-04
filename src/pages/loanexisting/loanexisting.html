@@ -1,18 +1,33 @@
-<!--
-  Generated template for the LoanexistingPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>loanexisting</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+<ion-content>
+    <ion-grid class="content">
+      <ion-row>
+        <ion-col>
+          <h6>Do you already have an existing loan?</h6>
+        </ion-col>
+      </ion-row>
+  
+      <form [formGroup]="existingloan" (ngSubmit)="doExistingLoan()">
+        <ion-item>
+          <ion-input type="text" placeholder="Loan Facility" formControlName="loan_facility"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Loan Amount (In Cr)" formControlName="loan_amount"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Interest Rate" formControlName="interest"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="text" placeholder="Bank Name" formControlName="bank_name"></ion-input>
+        </ion-item>
+        <ion-item>
+            <button ion-button ion-button round small (click)="noLoan()">No, i do not have any existing loan</button>
+        </ion-item>
+        <ion-item>
+            <button ion-button ion-button round small [disabled]="!existingloan.valid" type="submit">Click here to add another loan facility</button>
+        </ion-item>        
+  
+        <button ion-button [disabled]="!existingloan.valid" type="submit" float-right ion-button round outline small>DONE</button>
+  
+      </form>
+    </ion-grid>
+  </ion-content>

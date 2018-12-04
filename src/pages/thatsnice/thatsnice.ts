@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { LastAnswerPage } from '../last-answer/last-answer';
+
 /**
  * Generated class for the ThatsnicePage page.
  *
@@ -20,6 +22,10 @@ export class ThatsnicePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ThatsnicePage');
+  }
+
+  doProceed(){
+      this.navCtrl.setRoot(LastAnswerPage);
   }
 
 }

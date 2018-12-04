@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoantermPage } from '../loanterm/loanterm';
 
 /**
  * Generated class for the LoanrequirementPage page.
@@ -20,6 +21,11 @@ export class LoanrequirementPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoanrequirementPage');
+  }
+
+  doProceed(){
+    console.log('loan requirements');
+    this.navCtrl.setRoot(LoantermPage);
   }
 
 }

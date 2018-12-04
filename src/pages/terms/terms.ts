@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ThankyouPage } from '../thankyou/thankyou';
 
 /**
  * Generated class for the TermsPage page.
@@ -20,6 +21,10 @@ export class TermsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TermsPage');
+  }
+
+  doContinue(){
+    this.navCtrl.setRoot(ThankyouPage);
   }
 
 }

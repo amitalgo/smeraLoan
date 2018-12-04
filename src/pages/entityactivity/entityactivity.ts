@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 
+import { PandetailsPage } from '../pandetails/pandetails';
 /**
  * Generated class for the EntityactivityPage page.
  *
@@ -15,11 +17,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class EntityactivityPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  entityactivity: FormGroup;
+  activity : AbstractControl;
+  industry:AbstractControl;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
+    this.entityactivity = this.formBuilder.group({
+      activity: ['', Validators.required],
+      industry: ['', Validators.required],
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EntityactivityPage');
+  }
+
+  doEntityActivity(){
+    console.log("Entity Activity");
+    this.navCtrl.setRoot(PandetailsPage);
   }
 
 }

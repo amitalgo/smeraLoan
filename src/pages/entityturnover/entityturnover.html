@@ -1,18 +1,48 @@
-<!--
-  Generated template for the EntityturnoverPage page.
+<ion-content>
+  <ion-grid class="content">
+    <ion-row>
+      <ion-col>
+        <h6>Finally, could you help us with your entity's Sales Turnover & PAT?</h6>
+      </ion-col>
+    </ion-row>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+    <form [formGroup]="entityturnover" (ngSubmit)="doEntityTurnover()">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+              <ion-item>
+                  <ion-input type="text" placeholder="Enter PAN here" formControlName="pan"></ion-input>
+                </ion-item>
+          </ion-col>
+          <ion-col col-6>
+              <ion-item class="pan_year">
+                  <ion-select [formControl]="entityturnover.controls['pan_year']" placeholder="Choose Year" interface="popover">
+                      <ion-option value="2018">2018</ion-option>
+                      <ion-option value="2017">2017</ion-option>
+                    </ion-select>
+              </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-6>
+                <ion-item>
+                    <ion-input type="text" placeholder="PAT (In Cr)" formControlName="pat"></ion-input>
+                </ion-item>
+            </ion-col>
+            
+            <ion-col col-6>
+                <ion-item class="pat_year">
+                    <ion-select [formControl]="entityturnover.controls['pat_year']" placeholder="Choose Year" interface="popover">
+                        <ion-option value="2018">2018</ion-option>
+                        <ion-option value="2017">2017</ion-option>
+                      </ion-select>
+                </ion-item>
+            </ion-col>   
+        </ion-row>     
+      </ion-grid>   
 
-  <ion-navbar>
-    <ion-title>entityturnover</ion-title>
-  </ion-navbar>
+      <button ion-button [disabled]="!entityturnover.valid" type="submit" float-right ion-button round outline small>DONE</button>
 
-</ion-header>
-
-
-<ion-content padding>
-
+    </form>
+  </ion-grid>
 </ion-content>

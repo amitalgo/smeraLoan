@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { StartoperationsPage } from '../startoperations/startoperations';
 
 /**
  * Generated class for the LastAnswerPage page.
@@ -20,6 +21,10 @@ export class LastAnswerPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LastAnswerPage');
+  }
+
+  doLastAnswer(){
+    this.navCtrl.setRoot(StartoperationsPage);
   }
 
 }

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SubmitdocumentPage } from '../submitdocument/submitdocument';
+import { TermsPage } from '../terms/terms';
 
 /**
  * Generated class for the FewdocumentPage page.
@@ -20,6 +22,16 @@ export class FewdocumentPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FewdocumentPage');
+  }
+
+  doProceed(){
+    console.log("submit few documents");
+    this.navCtrl.setRoot(SubmitdocumentPage);
+  }
+
+  doNotNow(){
+    console.log("Not Now Submit Few Document");
+    this.navCtrl.setRoot(TermsPage);
   }
 
 }

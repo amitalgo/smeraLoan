@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoanexistingPage } from '../loanexisting/loanexisting';
 
 /**
  * Generated class for the OwnhousePage page.
@@ -20,6 +21,10 @@ export class OwnhousePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OwnhousePage');
+  }
+
+  doHouse(){
+    this.navCtrl.setRoot(LoanexistingPage);
   }
 
 }

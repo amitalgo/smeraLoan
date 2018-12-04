@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
-
+import { CompanynamePage } from '../companyname/companyname';
 /**
  * Generated class for the NameDesignationPage page.
  *
@@ -32,6 +32,7 @@ export class NameDesignationPage {
 
   doNameDes(){
     console.log('Name Submit');
+    this.navCtrl.setRoot(CompanynamePage);
   }
 
   ionViewDidLoad() {
