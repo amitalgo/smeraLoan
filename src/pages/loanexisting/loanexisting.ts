@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { FewdocumentPage } from '../fewdocument/fewdocument';
 
 /**
@@ -18,10 +18,6 @@ import { FewdocumentPage } from '../fewdocument/fewdocument';
 export class LoanexistingPage {
 
   existingloan: FormGroup;
-  loan_facility : AbstractControl;
-  loan_amount:AbstractControl;
-  interest:AbstractControl;
-  bank_name:AbstractControl;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
     this.existingloan = this.formBuilder.group({
@@ -30,11 +26,6 @@ export class LoanexistingPage {
       interest: ['', Validators.required],
       bank_name: ['', Validators.required],
     });
-
-    this.loan_facility = this.existingloan.controls['loan_facility'];
-    this.loan_amount = this.existingloan.controls['loan_amount'];
-    this.interest = this.existingloan.controls['interest'];
-    this.bank_name = this.existingloan.controls['bank_name'];
   }
 
   ionViewDidLoad() {

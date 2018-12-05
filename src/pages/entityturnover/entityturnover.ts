@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { LoanrequirementPage } from '../loanrequirement/loanrequirement';
 
 /**
@@ -18,10 +18,6 @@ import { LoanrequirementPage } from '../loanrequirement/loanrequirement';
 export class EntityturnoverPage {
 
   entityturnover: FormGroup;
-  pan : AbstractControl;
-  pan_year:AbstractControl;
-  pat:AbstractControl;
-  pat_year:AbstractControl;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
     this.entityturnover = this.formBuilder.group({
@@ -30,11 +26,6 @@ export class EntityturnoverPage {
       pat: ['', Validators.required],
       pat_year: ['', Validators.required],
     });
-
-    this.pan = this.entityturnover.controls['pan'];
-    this.pan_year = this.entityturnover.controls['pan_year'];
-    this.pat = this.entityturnover.controls['pat'];
-    this.pat_year = this.entityturnover.controls['pat_year'];
   }
 
   ionViewDidLoad() {

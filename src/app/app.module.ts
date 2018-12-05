@@ -34,6 +34,7 @@ import { FewdocumentPage } from '../pages/fewdocument/fewdocument';
 import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
 import { TermsPage } from '../pages/terms/terms';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
+import { UserProvider } from '../providers/user/user';
 
 
 @NgModule({
@@ -103,7 +104,8 @@ import { ThankyouPage } from '../pages/thankyou/thankyou';
     SplashScreen,
     AndroidFullScreen,
     NativePageTransitions,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserProvider
   ]
 })
 export class AppModule {}

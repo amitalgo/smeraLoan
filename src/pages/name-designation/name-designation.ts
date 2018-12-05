@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CompanynamePage } from '../companyname/companyname';
 /**
  * Generated class for the NameDesignationPage page.
@@ -17,17 +17,12 @@ import { CompanynamePage } from '../companyname/companyname';
 export class NameDesignationPage {
 
   private namedes: FormGroup;
-  name: AbstractControl;
-  designation: AbstractControl;
 
   constructor(public navCtrl: NavController, private menuCtrl:MenuController ,public navParams: NavParams, private formBuilder: FormBuilder,) {
     this.namedes = this.formBuilder.group({
       name: ['', Validators.required],
       designation: ['', Validators.required],
     });
-
-    this.name = this.namedes.controls['name'];
-    this.designation = this.namedes.controls['designation'];
   }
 
   ionViewWillEnter () {

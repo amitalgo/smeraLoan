@@ -6,15 +6,15 @@
       </ion-col>
     </ion-row>
 
-    <form [formGroup]="pandet" (ngSubmit)="doPanDet()">
+    <form [formGroup]="pandet" (ngSubmit)="doPanDet()" class="animated fadeInRight" >
       <ion-item>
-        <ion-input type="text" placeholder="Enter PAN here" formControlName="pan"></ion-input>
+        <ion-input type="text" placeholder="Enter PAN here" [formControl]="pandet.controls['pan']"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Enter GSTIN here" formControlName="gst"></ion-input>
+        <ion-input type="text" placeholder="Enter GSTIN here" [formControl]="pandet.controls['gst']"></ion-input>
       </ion-item>
 
-      <button class="animated fadeInRight" ion-button [disabled]="!pandet.valid" type="submit" float-right ion-button round outline small>DONE</button>
+      <button ion-button [disabled]="!pandet.valid" type="submit" float-right ion-button round outline small>DONE</button>
 
     </form>
   </ion-grid>

@@ -25,14 +25,14 @@ export class HomePage {
   }
 
   register(){
-      console.log("clicked");
-    let options: NativeTransitionOptions={
-        direction: 'up',
-        duration: 400,
-        slowdownfactor: -1,
-        iosdelay:50
-      }
-      this.nativePageTransitions.slide(options);
+      console.log("home");
+    // let options: NativeTransitionOptions={
+    //     direction: 'up',
+    //     duration: 400,
+    //     slowdownfactor: -1,
+    //     iosdelay:50
+    //   }
+    //   this.nativePageTransitions.slide(options);
       this.navCtrl.setRoot(RegisterPage);
   }
 

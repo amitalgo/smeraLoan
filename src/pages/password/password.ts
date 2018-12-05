@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { NameDesignationPage } from '../name-designation/name-designation';
 
@@ -19,14 +19,12 @@ import { NameDesignationPage } from '../name-designation/name-designation';
 export class PasswordPage {
 
   private submit: FormGroup;
-  password: AbstractControl;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,) {
     this.submit = this.formBuilder.group({
       password: ['', Validators.required],
     });
 
-    this.password = this.submit.controls['password'];
   }
 
   doSubmit(){

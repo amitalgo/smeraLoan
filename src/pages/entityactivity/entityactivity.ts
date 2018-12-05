@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { PandetailsPage } from '../pandetails/pandetails';
 /**
@@ -18,8 +18,6 @@ import { PandetailsPage } from '../pandetails/pandetails';
 export class EntityactivityPage {
 
   entityactivity: FormGroup;
-  activity : AbstractControl;
-  industry:AbstractControl;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
     this.entityactivity = this.formBuilder.group({

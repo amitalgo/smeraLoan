@@ -6,18 +6,18 @@
         </ion-col>
       </ion-row>
 
-    <form [formGroup]="entitylocated" (ngSubmit)="doEntityLocated()">
+    <form [formGroup]="entitylocated" (ngSubmit)="doEntityLocated()" class="animated fadeInRight">
       <ion-item>        
         <ion-textarea [formControl]="entitylocated.controls['address']" placeholder="Address"></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="City" formControlName="city"></ion-input>
+        <ion-input type="text" placeholder="City" [formControl]="entitylocated.controls['city']"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Pincode" formControlName="pincode"></ion-input>
+        <ion-input type="text" placeholder="Pincode" [formControl]="entitylocated.controls['pincode']"></ion-input>
       </ion-item>
       <ion-item>
-          <button class="animated fadeInRight" ion-button [disabled]="!entitylocated.valid" type="submit" float-right ion-button round outline small>DONE</button>
+          <button ion-button [disabled]="!entitylocated.valid" type="submit" float-right ion-button round outline small>DONE</button>
       </ion-item>
     </form>
   </ion-grid>

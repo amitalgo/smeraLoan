@@ -6,21 +6,21 @@
         </ion-col>
       </ion-row>
   
-      <form [formGroup]="loanterm" (ngSubmit)="doLoanTerm()">
+      <form [formGroup]="loanterm" (ngSubmit)="doLoanTerm()" class="animated fadeInRight">
         <ion-item>
-          <ion-input type="text" placeholder="Enter Term Loan amount here (In Cr)" formControlName="loan_amount"></ion-input>
+          <ion-input type="text" placeholder="Enter Term Loan amount here (In Cr)" [formControl]="loanterm.controls['loan_amount']" ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="text" placeholder="Enter Working Capital amount here (In Cr)" formControlName="capital_amount"></ion-input>
+          <ion-input type="text" placeholder="Enter Working Capital amount here (In Cr)" [formControl]="loanterm.controls['capital_amount']" ></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="text" placeholder="Enter Other Facility Type here" formControlName="other_facility"></ion-input>
+            <ion-input type="text" placeholder="Enter Other Facility Type here" [formControl]="loanterm.controls['other_facility']" ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="text" placeholder="Enter Other Facility amount here (In Cr)" formControlName="other_facility_amount"></ion-input>
+          <ion-input type="text" placeholder="Enter Other Facility amount here (In Cr)" [formControl]="loanterm.controls['other_facility_amount']"></ion-input>
         </ion-item>
 
-        <button class="animated fadeInRight" ion-button [disabled]="!loanterm.valid" type="submit" float-right ion-button round outline small>DONE</button>
+        <button ion-button [disabled]="!loanterm.valid" type="submit" float-right ion-button round outline small>DONE</button>
   
       </form>
     </ion-grid>

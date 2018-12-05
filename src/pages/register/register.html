@@ -7,16 +7,16 @@
     </ion-row>
     
     
-          <form [formGroup]="register" (ngSubmit)="doRegister()">
+          <form [formGroup]="register" (ngSubmit)="doRegister()" class="animated fadeInRight">
             
               <ion-item>
-                <ion-input type="text" placeholder="Type email address here" formControlName="email"></ion-input>
+                <ion-input type="text" placeholder="Type email address here" [formControl]="register.controls['email']" ></ion-input>
               </ion-item>
               <!-- <ion-item *ngIf="register.controls['email'].errors?.required && register.controls['email'].touched">
                 <p>Email is required</p>
               </ion-item> -->
               <ion-item>
-                <ion-input formControlName="mobile" placeholder="Enter mobile number here" type="text"></ion-input>
+                <ion-input [formControl]="register.controls['mobile']" placeholder="Enter mobile number here" type="text"></ion-input>
               </ion-item>
             
             <button ion-button [disabled]="!register.valid" type="submit" float-right ion-button round outline small>NEXT</button>

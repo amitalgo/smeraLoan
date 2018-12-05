@@ -6,7 +6,7 @@
       </ion-col>
     </ion-row>
 
-    <form [formGroup]="entityactivity" (ngSubmit)="doEntityActivity()">
+    <form [formGroup]="entityactivity" (ngSubmit)="doEntityActivity()" class="animated fadeInRight">
       
         <ion-item class="activity">
         <ion-select [formControl]="entityactivity.controls['activity']" placeholder="Select Activity" interface="popover">
@@ -24,7 +24,7 @@
         </ion-item>
 
         
-        <button class="animated fadeInRight" ion-button [disabled]="!entityactivity.valid" type="submit" float-right ion-button round outline small>DONE</button>
+        <button ion-button [disabled]="!entityactivity.valid" type="submit" float-right ion-button round outline small>DONE</button>
           
     </form>
   </ion-grid>

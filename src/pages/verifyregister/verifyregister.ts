@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { PasswordPage } from '../password/password';
 /**
@@ -18,14 +18,11 @@ import { PasswordPage } from '../password/password';
 export class VerifyregisterPage {
 
   private verify: FormGroup;
-  otp: AbstractControl;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,) {
     this.verify = this.formBuilder.group({
       otp: ['', Validators.required],
     });
-
-    this.otp = this.verify.controls['otp'];
   }
 
   doVerify(){

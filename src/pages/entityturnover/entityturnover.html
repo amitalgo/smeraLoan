@@ -6,12 +6,12 @@
       </ion-col>
     </ion-row>
 
-    <form [formGroup]="entityturnover" (ngSubmit)="doEntityTurnover()">
+    <form [formGroup]="entityturnover" (ngSubmit)="doEntityTurnover()" class="animated fadeInRight">
       <ion-grid>
         <ion-row>
           <ion-col col-6>
               <ion-item>
-                  <ion-input type="text" placeholder="Enter PAN here" formControlName="pan"></ion-input>
+                  <ion-input type="text" placeholder="Enter PAN here" [formControl]="entityturnover.controls['pan']"></ion-input>
                 </ion-item>
           </ion-col>
           <ion-col col-6>
@@ -26,7 +26,7 @@
         <ion-row>
             <ion-col col-6>
                 <ion-item>
-                    <ion-input type="text" placeholder="PAT (In Cr)" formControlName="pat"></ion-input>
+                    <ion-input type="text" placeholder="PAT (In Cr)" [formControl]="entityturnover.controls['pat']"></ion-input>
                 </ion-item>
             </ion-col>
             
@@ -41,7 +41,7 @@
         </ion-row>     
       </ion-grid>   
 
-      <button class="animated fadeInRight" ion-button [disabled]="!entityturnover.valid" type="submit" float-right ion-button round outline small>DONE</button>
+      <button ion-button [disabled]="!entityturnover.valid" type="submit" float-right ion-button round outline small>DONE</button>
 
     </form>
   </ion-grid>

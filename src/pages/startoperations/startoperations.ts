@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { EntitytypePage } from '../entitytype/entitytype';
 
@@ -19,14 +19,13 @@ import { EntitytypePage } from '../entitytype/entitytype';
 export class StartoperationsPage {
 
   private operations: FormGroup;
-  year:AbstractControl;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
     this.operations = this.formBuilder.group({
       year:['',Validators.required]
     });  
 
-    this.year = this.operations.controls['year'];
+    
   }
 
   ionViewDidLoad() {

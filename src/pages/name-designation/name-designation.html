@@ -15,15 +15,15 @@
     </ion-row>
 
 
-    <form [formGroup]="namedes" (ngSubmit)="doNameDes()">
+    <form [formGroup]="namedes" (ngSubmit)="doNameDes()" class="animated fadeInRight">
       <ion-item>
-        <ion-input type="text" placeholder="First Name + Last Name" formControlName="name"></ion-input>
+        <ion-input type="text" placeholder="First Name + Last Name" [formControl]="namedes.controls['name']"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Designation" formControlName="designation"></ion-input>
+        <ion-input type="text" placeholder="Designation" [formControl]="namedes.controls['designation']"></ion-input>
       </ion-item>
 
-      <button class="animated fadeInRight" ion-button [disabled]="!namedes.valid" type="submit" float-right ion-button round outline small>DONE</button>
+      <button ion-button [disabled]="!namedes.valid" type="submit" float-right ion-button round outline small>DONE</button>
 
     </form>
   </ion-grid>

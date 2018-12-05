@@ -6,12 +6,12 @@
       </ion-col>
     </ion-row>
 
-    <form [formGroup]="operations" (ngSubmit)="doOperations()">
+    <form [formGroup]="operations" (ngSubmit)="doOperations()" class="animated fadeInRight">
       <ion-grid>
           <ion-row>
             <ion-col>
                 <ion-item>
-                    <button class="animated fadeInRight" ion-button float-right ion-button round outline small>Yet to start my operations</button>
+                    <button ion-button float-right ion-button round outline small>Yet to start my operations</button>
                   </ion-item>
             </ion-col>
           </ion-row>
@@ -29,7 +29,7 @@
           
           <ion-row>
             <ion-col>
-                <button class="animated fadeInRight" ion-button [disabled]="!operations.valid" type="submit" float-right ion-button round outline small>DONE</button>
+                <button ion-button [disabled]="!operations.valid" type="submit" float-right ion-button round outline small>DONE</button>
             </ion-col>
           </ion-row>          
       </ion-grid>

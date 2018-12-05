@@ -8,16 +8,16 @@
   
       <form [formGroup]="existingloan" (ngSubmit)="doExistingLoan()">
         <ion-item>
-          <ion-input type="text" placeholder="Loan Facility" formControlName="loan_facility"></ion-input>
+          <ion-input type="text" placeholder="Loan Facility" [formControl]="existingloan.controls['loan_facility']"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="text" placeholder="Loan Amount (In Cr)" formControlName="loan_amount"></ion-input>
+          <ion-input type="text" placeholder="Loan Amount (In Cr)" [formControl]="existingloan.controls['loan_amount']"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="text" placeholder="Interest Rate" formControlName="interest"></ion-input>
+            <ion-input type="text" placeholder="Interest Rate" [formControl]="existingloan.controls['interest']"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-input type="text" placeholder="Bank Name" formControlName="bank_name"></ion-input>
+            <ion-input type="text" placeholder="Bank Name" [formControl]="existingloan.controls['bank_name']"></ion-input>
         </ion-item>
         <ion-item>
             <button class="animated fadeInRight" ion-button ion-button round small (click)="noLoan()">No, i do not have any existing loan</button>
