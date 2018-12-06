@@ -5,6 +5,7 @@ import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/na
 
 // Pages
 import { RegisterPage } from '../register/register';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -18,6 +19,11 @@ export class HomePage {
   constructor(public navCtrl: NavController, public menuCtrl: MenuController, private nativePageTransitions: NativePageTransitions) {
 
     this.menuCtrl.enable(false, 'myMenu');    
+    var i;
+    console.log("local storage");
+    for (i = 0; i < localStorage.length; i++)   {
+        console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+    }
   }
 
   applyClassBySelection(effect : string): void{
@@ -34,6 +40,10 @@ export class HomePage {
     //   }
     //   this.nativePageTransitions.slide(options);
       this.navCtrl.setRoot(RegisterPage);
+  }
+
+  login(){
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }

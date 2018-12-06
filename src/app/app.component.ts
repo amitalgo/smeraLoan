@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { SharedProvider } from '../providers/shared/shared';
+import { NameDesignationPage } from '../pages/name-designation/name-designation';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,8 +17,9 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
+  isLoggedIn: any;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public sharedProvider: SharedProvider,public splashScreen: SplashScreen) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -37,6 +40,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.isLoggedIn = this.sharedProvider.isLoggedIn();
+      if(this.isLoggedIn){
+        this.nav.setRoot(NameDesignationPage);
+      }
     });
   }
 

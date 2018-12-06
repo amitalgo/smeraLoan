@@ -37,6 +37,7 @@ import { TermsPage } from '../pages/terms/terms';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { UserProvider } from '../providers/user/user';
 import { SharedProvider } from '../providers/shared/shared';
+import { LoginPage } from '../pages/login/login';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { SharedProvider } from '../providers/shared/shared';
     FewdocumentPage,
     SubmitdocumentPage,
     TermsPage,
-    ThankyouPage
+    ThankyouPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -100,7 +102,8 @@ import { SharedProvider } from '../providers/shared/shared';
     FewdocumentPage,
     SubmitdocumentPage,
     TermsPage,
-    ThankyouPage
+    ThankyouPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

@@ -19,13 +19,37 @@ export class UserProvider {
   register(data){
     return new Promise((resolve, reject)=>{
       this.http.post(this.apiUrl+'controller=user&action=register',JSON.stringify(data),{
-        headers: new HttpHeaders().set('Content-Type','application/json').set('Accept','application/json')
+        headers: new HttpHeaders().set('Content-Type','application/json').set('Accept','application/json')     
       }).subscribe(res=>{
         resolve(res)
       },(err)=>{
         reject(err)
       })
     })    
+  }
+
+  autheticate(data){
+    return new Promise((resolve, reject)=>{
+      this.http.post(this.apiUrl+'controller=user&action=login',JSON.stringify(data),{
+        headers: new HttpHeaders().set('Content-Type','application/json').set('Accept','application/json')     
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    })
+  }
+
+  detail(token){
+    return new Promise((resolve, reject)=>{
+      this.http.get(this.apiUrl+'controller=user&action=profile',{
+        headers: new HttpHeaders().set('Access-Control-Allow-Origin','*').set('Accept','application/json').set('Token', token)
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    }) 
   }
 
 }

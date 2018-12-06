@@ -12,7 +12,7 @@ import { LoadingController, ToastController } from 'ionic-angular';
 export class SharedProvider {
 
   loading: any;
-  user: any;
+  member: any;
   token: any;
 
   constructor(public http: HttpClient, private loadingCtrl: LoadingController, private toastCtrl: ToastController) {
@@ -20,11 +20,16 @@ export class SharedProvider {
   }
 
   getUserInfo() {
-    this.user = {
-      "userId": localStorage.getItem('userId'),
-      "fullName": localStorage.getItem('fullName'),
+    this.member = {
+      "memberId": localStorage.getItem('memberId'),
+      "firstname": localStorage.getItem('firstname'),
+      "lastname": localStorage.getItem('lastname'),
       "email": localStorage.getItem('email'),
-      "image": localStorage.getItem('image')
+      "companyName":localStorage.getItem('companyname'),
+      "pan":localStorage.getItem("pan"),
+      "designation":localStorage.getItem("designation"),
+      "city":localStorage.getItem("city"),
+      "salutation":localStorage.getItem("salutation")
     }
   }
 
