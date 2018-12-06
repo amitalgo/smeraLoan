@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -35,6 +36,7 @@ import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
 import { TermsPage } from '../pages/terms/terms';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { UserProvider } from '../providers/user/user';
+import { SharedProvider } from '../providers/shared/shared';
 
 
 @NgModule({
@@ -69,6 +71,7 @@ import { UserProvider } from '../providers/user/user';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -105,7 +108,8 @@ import { UserProvider } from '../providers/user/user';
     AndroidFullScreen,
     NativePageTransitions,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UserProvider
+    UserProvider,
+    SharedProvider
   ]
 })
 export class AppModule {}
