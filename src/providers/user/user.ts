@@ -52,4 +52,28 @@ export class UserProvider {
     }) 
   }
 
+  verifyotp(data){
+    return new Promise((resolve, reject)=>{
+      this.http.post(this.apiUrl+'controller=user&action=otpver',JSON.stringify(data),{
+        headers: new HttpHeaders().set('Content-Type','application/json').set('Accept','application/json')     
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    })
+  }
+
+  logout(token){
+    return new Promise((resolve, reject)=>{
+      this.http.get(this.apiUrl+'controller=user&action=logout',{
+        headers: new HttpHeaders().set('Accept','application/json').set('Token', token)
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    }) 
+  }
+
 }

@@ -41,6 +41,7 @@ export class RegisterPage {
     this.userProvider.register(this.register.value).then(result => {
       // this.sharedProvider.dismissLoader()
       this.response = result
+      localStorage.setItem('email',this.register.value.email)
       this.navCtrl.setRoot(VerifyregisterPage);
     }).catch(err => {
       console.log(err)

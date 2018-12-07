@@ -46,7 +46,6 @@ export class LoginPage {
 
   fetchMemberProfile(token){
     this.token = token
-    console.log(this.token)
     this.userProvider.detail(this.token).then(result=>{
       this.sharedProvider.dismissLoader()
       this.memberResponse = result
@@ -57,7 +56,6 @@ export class LoginPage {
       localStorage.setItem('company_name', this.memberResponse.company_name)
       localStorage.setItem('designation',this.memberResponse.designation)
       this.event.publish('user:updated',[])
-      var i;
       this.navCtrl.setRoot(NameDesignationPage)
     }).catch(err=>{
       this.sharedProvider.dismissLoader()

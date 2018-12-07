@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { SharedProvider } from '../providers/shared/shared';
 import { NameDesignationPage } from '../pages/name-designation/name-designation';
+import { UserProvider } from '../providers/user/user';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,8 +19,9 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
   isLoggedIn: any;
+  token:any;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public sharedProvider: SharedProvider,public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public sharedProvider: SharedProvider,public splashScreen: SplashScreen,private userProvider:UserProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -28,8 +30,7 @@ export class MyApp {
       { title: 'Application Status', component: ListPage },
       { title: 'Banker Interests', component: ListPage },
       { title: 'Notifications', component: ListPage },
-      { title: 'Change Password', component: ListPage },
-      { title: 'Logout', component: ListPage }
+      { title: 'Change Password', component: ListPage }
     ];
 
   }
@@ -45,6 +46,20 @@ export class MyApp {
         this.nav.setRoot(NameDesignationPage);
       }
     });
+  }
+
+  doLogout(){
+    this.sharedProvider.showLoader()
+    this.token = localStorage.getItem('token')
+    this.userProvider.logout(this.token).then(result=>{
+      this.sharedProvider.clearLocalStorage()
+      this.sharedProvider.dismissLoader()
+      this.nav.setRoot(HomePage)
+    }).catch(err=>{
+      this.sharedProvider.dismissLoader()
+      this.sharedProvider.presentToast("Something went wrong!")
+    })
+
   }
 
   openPage(page) {
