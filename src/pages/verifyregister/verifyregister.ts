@@ -52,18 +52,17 @@ export class VerifyregisterPage {
   fetchMemberProfile(token){
     this.token = token
     console.log(this.token)
-    return;
-    this.userProvider.detail(this.token).then(result=>{
-      // this.sharedProvider.dismissLoader()
-      this.response = result
-      localStorage.setItem('memberId',this.response.member_id)
-      localStorage.setItem('email', this.response.email)
-      this.event.publish('user:updated',[])
-      this.navCtrl.setRoot(PasswordPage)
-    }).catch(err=>{
-      // this.sharedProvider.dismissLoader()
-      console.log(err)
-    })
+    // this.userProvider.detail(this.token).then(result=>{
+    //   // this.sharedProvider.dismissLoader()
+    //   this.response = result
+    //   localStorage.setItem('memberId',this.response.member_id)
+    //   localStorage.setItem('email', this.response.email)
+    //   this.event.publish('user:updated',[])
+    //   this.navCtrl.setRoot(PasswordPage)
+    // }).catch(err=>{
+    //   // this.sharedProvider.dismissLoader()
+    //   console.log(err)
+    // })
   }
 
   ionViewDidLoad() {

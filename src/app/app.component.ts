@@ -8,6 +8,8 @@ import { ListPage } from '../pages/list/list';
 import { SharedProvider } from '../providers/shared/shared';
 import { NameDesignationPage } from '../pages/name-designation/name-designation';
 import { UserProvider } from '../providers/user/user';
+import { DashboardPage } from '../pages/dashboard/dashboard';
+import { ListapplicationsPage } from '../pages/listapplications/listapplications';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,7 +17,7 @@ import { UserProvider } from '../providers/user/user';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = ListapplicationsPage ;
 
   pages: Array<{title: string, component: any}>;
   isLoggedIn: any;

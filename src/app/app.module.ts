@@ -38,6 +38,8 @@ import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { UserProvider } from '../providers/user/user';
 import { SharedProvider } from '../providers/shared/shared';
 import { LoginPage } from '../pages/login/login';
+import { DashboardPage } from '../pages/dashboard/dashboard';
+import { ListapplicationsPage } from '../pages/listapplications/listapplications';
 
 
 @NgModule({
@@ -68,7 +70,9 @@ import { LoginPage } from '../pages/login/login';
     SubmitdocumentPage,
     TermsPage,
     ThankyouPage,
-    LoginPage
+    LoginPage,
+    DashboardPage,
+    ListapplicationsPage
   ],
   imports: [
     BrowserModule,
@@ -103,7 +107,9 @@ import { LoginPage } from '../pages/login/login';
     SubmitdocumentPage,
     TermsPage,
     ThankyouPage,
-    LoginPage
+    LoginPage,
+    DashboardPage,
+    ListapplicationsPage
   ],
   providers: [
     StatusBar,
