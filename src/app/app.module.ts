@@ -40,6 +40,9 @@ import { SharedProvider } from '../providers/shared/shared';
 import { LoginPage } from '../pages/login/login';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { ListapplicationsPage } from '../pages/listapplications/listapplications';
+import { ApplicationanswerPage } from '../pages/applicationanswer/applicationanswer';
+
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -72,12 +75,14 @@ import { ListapplicationsPage } from '../pages/listapplications/listapplications
     ThankyouPage,
     LoginPage,
     DashboardPage,
-    ListapplicationsPage
+    ListapplicationsPage,
+    ApplicationanswerPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -109,7 +114,8 @@ import { ListapplicationsPage } from '../pages/listapplications/listapplications
     ThankyouPage,
     LoginPage,
     DashboardPage,
-    ListapplicationsPage
+    ListapplicationsPage,
+    ApplicationanswerPage
   ],
   providers: [
     StatusBar,

@@ -39,11 +39,11 @@ export class HomePage {
     //     iosdelay:50
     //   }
     //   this.nativePageTransitions.slide(options);
-      this.navCtrl.setRoot(RegisterPage);
+      this.navCtrl.push(RegisterPage);
   }
 
   login(){
-    this.navCtrl.setRoot(LoginPage);
+    this.navCtrl.push(LoginPage);
   }
 
 }

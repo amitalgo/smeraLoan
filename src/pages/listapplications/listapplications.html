@@ -1,5 +1,5 @@
 <ion-footer>
-    <ion-navbar color="white">
+    <ion-navbar color="white" hideBackButton="true">
       <button ion-button menuToggle right>
         <ion-icon name="menu"></ion-icon>
       </button>
@@ -8,6 +8,11 @@
   
   <ion-header>
       <ion-navbar color="white" class="centre">
+        <ion-buttons left>
+              <button ion-button icon-only>
+                  <ion-icon name="arrow-back"></ion-icon>
+              </button>
+          </ion-buttons>
           <ion-title>Applications</ion-title>
         </ion-navbar>
   </ion-header>
@@ -16,7 +21,7 @@
 
     <ion-grid>
       <ion-row>
-        <ion-col col-4>
+        <ion-col col-4 (click)="previewAnswer()">
           <button ion-button block class="but">
             <div>
               <!-- <ion-icon name="flash"  ></ion-icon> -->
@@ -31,6 +36,36 @@
             </div>
         </button> 
         </ion-col>
+        <ion-col col-4 (click)="previewAnswer()">
+            <button ion-button block class="but">
+              <div>
+                <!-- <ion-icon name="flash"  ></ion-icon> -->
+                <div class="avatar">
+                  <ion-avatar item-start>
+                    <img src="assets/imgs/document.png" alt="">  
+                  </ion-avatar>
+                </div>
+                <div class="text">
+                  <label>Flash</label>
+                </div>
+              </div>
+          </button> 
+          </ion-col>
+          <ion-col col-4 (click)="previewAnswer()">
+              <button ion-button block class="but">
+                <div>
+                  <!-- <ion-icon name="flash"  ></ion-icon> -->
+                  <div class="avatar">
+                    <ion-avatar item-start>
+                      <img src="assets/imgs/document.png" alt="">  
+                    </ion-avatar>
+                  </div>
+                  <div class="text">
+                    <label>Flash</label>
+                  </div>
+                </div>
+            </button> 
+            </ion-col>
         <!-- <ion-col col-4>
           <button ion-button>
             <div>
@@ -42,6 +77,12 @@
           <label>Profile 1</label>
         </ion-col> -->
   
+      </ion-row>
+
+      <ion-row>
+          <ion-col col-4>
+            <button float-left ion-button round small>Add</button>
+          </ion-col>
       </ion-row>
     </ion-grid>
   </ion-content>

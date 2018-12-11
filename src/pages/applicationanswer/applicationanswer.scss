@@ -1,0 +1,53 @@
+page-applicationanswer {
+    .accordion-list {
+        // background: color($colors, light);
+        height: 100%;   
+        margin-top:50px;    
+    }
+    .section {
+        background: #fff;
+        color: #000;
+        margin-bottom: 4px;
+    }
+ 
+    .child {
+        background: #e8e7e6;
+        color: #000;
+        margin-bottom: 4px;
+    }
+    .child-item {
+        // background: #f3f2f1;
+        background:#fff;
+        padding: 10px;
+        border-bottom:solid #cbe8f9 1px !important;
+    }
+    .label {
+        margin: 0px;
+    }
+    .list {
+        margin-bottom: 4px;
+    }
+    .trans{
+        transition: 0.2s linear;
+    }
+
+    .toggleIcon{
+        margin-right:10% !important;
+        color:grey;
+    }
+
+    .list-header-md{
+        margin-bottom:0 !important; border-top:0 !important;
+    }
+    .item-md p{margin:0 0 2px 6px;}
+
+    .screen_centre {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .backArr{
+        color:grey;
+    }
+}

@@ -10,6 +10,9 @@ page-listapplications {
 
     .but{
         background-color:white !important;
+        -webkit-box-shadow:none;
+        box-shadow: none;
+        height:9em;
     }
 
     .but label{
@@ -18,11 +21,6 @@ page-listapplications {
 
     ion-icon.icon.icon-md.ion-md-flash {
         color: black;
-    }
-    .button-md{
-        -webkit-box-shadow:none;
-        box-shadow: none;
-        height:9em;
     }
 
     .avatar{

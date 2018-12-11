@@ -1,0 +1,24 @@
+{
+    "items": [
+        {
+            "name": "What is your Entity Name?",
+            "children": [
+                {
+                    "name": "Special Academy Pizza",
+                    "information": "Pastrami pork belly ball tip andouille corned beef jerky shankle landjaeger. Chicken chuck porchetta picanha, ham brisket tenderloin venison meatloaf landjaeger jowl.",
+                    "price": "$25"
+                }
+            ]
+        },
+        {
+            "name": "What is your Entity Type?",
+            "children": [
+                {
+                    "name": "Special Academy Pizza",
+                    "information": " Landjaeger fatback shank frankfurter, tongue shoulder ham strip steak pancetta pork short loin corned beef short ribs biltong cow",
+                    "price": "$25"
+                }
+            ]
+        }
+    ]
+}
