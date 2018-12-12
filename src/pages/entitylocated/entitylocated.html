@@ -16,8 +16,8 @@
       <ion-item>
         <ion-input type="text" placeholder="Pincode" [formControl]="entitylocated.controls['pincode']"></ion-input>
       </ion-item>
-      <ion-item>
-          <button ion-button [disabled]="!entitylocated.valid" type="submit" float-right ion-button round outline small>DONE</button>
+      <ion-item no-lines>
+          <button ion-button [disabled]="!entitylocated.valid" type="submit" float-right ion-button round small>DONE</button>
       </ion-item>
     </form>
   </ion-grid>

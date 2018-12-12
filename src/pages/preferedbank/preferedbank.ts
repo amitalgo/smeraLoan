@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { OwnhousePage } from '../ownhouse/ownhouse';
+import { SharedProvider } from '../../providers/shared/shared';
+import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
+import { FewdocumentPage } from '../fewdocument/fewdocument';
 
 /**
  * Generated class for the PreferedbankPage page.
@@ -16,16 +19,38 @@ import { OwnhousePage } from '../ownhouse/ownhouse';
 })
 export class PreferedbankPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public data = {};
+  token : any;
+  response : any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,private sharedProvider:SharedProvider,private loanApplication:LoanapplicationProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PreferedbankPage');
   }
 
-  doProceed(){
-    console.log("Prefered Bank");
-    this.navCtrl.setRoot(OwnhousePage);
+  doProceed(preferedBank){
+    this.sharedProvider.showLoader();
+    this.data['salesTurnPan']=localStorage.getItem('salesTurnPan');
+    this.data['salesTurnPat']=localStorage.getItem('salesTurnPat');
+    this.data['termLoan']=localStorage.getItem('termLoan');
+    this.data['wrkcapitalAmt']=localStorage.getItem('wrkcapitalAmt');
+    this.data['otherFacType']=localStorage.getItem('otherFacType');
+    this.data['otherFacAmt']=localStorage.getItem('otherFacAmt')
+    this.data['preferedBank']=preferedBank
+    this.token=localStorage.getItem('token');
+
+    this.loanApplication.updateLoanApplication(this.token,this.data).then(result => {
+      this.sharedProvider.dismissLoader();
+      this.response = result
+      localStorage.setItem('preferedBank',preferedBank);
+      this.navCtrl.push(FewdocumentPage);
+    }).catch(err => {
+      console.log(err)
+      this.sharedProvider.dismissLoader();
+      this.sharedProvider.presentToast("Something went wrong")
+    });
   }
 
 }

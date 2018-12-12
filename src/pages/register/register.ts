@@ -25,7 +25,7 @@ export class RegisterPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,private viewCtrl:ViewController,private sharedProvider:SharedProvider,private userProvider: UserProvider) {
     this.register = this.formBuilder.group({
       email: ['',Validators.compose([Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
-      mobile: ['', Validators.compose([Validators.required,Validators.minLength(10),Validators.pattern('^[0-9]*$')])]
+      mobile: ['', Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern('^[0-9]*$')])]
     });
   }
 
@@ -42,6 +42,7 @@ export class RegisterPage {
       // this.sharedProvider.dismissLoader()
       this.response = result
       localStorage.setItem('email',this.register.value.email)
+      localStorage.setItem('mobile',this.register.value.mobile)
       this.navCtrl.push(VerifyregisterPage);
     }).catch(err => {
       console.log(err)

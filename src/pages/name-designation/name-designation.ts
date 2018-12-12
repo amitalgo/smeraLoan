@@ -30,7 +30,8 @@ export class NameDesignationPage {
   }
 
   doNameDes(){
-    console.log('Name Submit');
+    localStorage.setItem('name',this.namedes.value.name);
+    localStorage.setItem('designation',this.namedes.value.designation);
     this.navCtrl.setRoot(CompanynamePage);
   }
 

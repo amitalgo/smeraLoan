@@ -31,20 +31,21 @@ export class VerifyregisterPage {
 
   doVerify(){
     console.log('Enter verified');
+    this.sharedProvider.showLoader();
     this.verify.value['email']=localStorage.getItem('email');
-
     this.userProvider.verifyotp(this.verify.value).then(result => {
-      // this.sharedProvider.dismissLoader()
+      this.sharedProvider.dismissLoader();
       this.response = result
       if (typeof this.response.message === "undefined") {
-        // localStorage.setItem('token', this.response.token)
+        localStorage.setItem('token', this.response.token)
+        localStorage.setItem('otp','true')
         this.fetchMemberProfile(this.response.token)
       } else {
         this.sharedProvider.presentToast(this.response.message);
       }
     }).catch(err => {
       console.log(err)
-      // this.sharedProvider.dismissLoader()
+      this.sharedProvider.dismissLoader();
       this.sharedProvider.presentToast("Something Went Wrong");
     });
   }
@@ -54,7 +55,6 @@ export class VerifyregisterPage {
     this.userProvider.detail(this.token).then(result=>{
       // this.sharedProvider.dismissLoader()
       this.response = result
-
       
       localStorage.setItem('memberId',this.response.member_id)
       localStorage.setItem('email', this.response.email)

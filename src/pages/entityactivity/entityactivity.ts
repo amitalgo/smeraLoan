@@ -31,7 +31,8 @@ export class EntityactivityPage {
   }
 
   doEntityActivity(){
-    console.log("Entity Activity");
+    localStorage.setItem('activity',this.entityactivity.value.activity);
+    localStorage.setItem('industry',this.entityactivity.value.industry);
     this.navCtrl.setRoot(PandetailsPage);
   }
 

@@ -11,6 +11,12 @@ import { UserProvider } from '../providers/user/user';
 import { ListapplicationsPage } from '../pages/listapplications/listapplications';
 import { ApplicationanswerPage } from '../pages/applicationanswer/applicationanswer';
 import { LoginPage } from '../pages/login/login';
+import { VerifyregisterPage } from '../pages/verifyregister/verifyregister';
+import { PasswordPage } from '../pages/password/password';
+import { DashboardPage } from '../pages/dashboard/dashboard';
+import { StartoperationsPage } from '../pages/startoperations/startoperations';
+import { EntityturnoverPage } from '../pages/entityturnover/entityturnover';
+import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +24,7 @@ import { LoginPage } from '../pages/login/login';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =  HomePage
+  rootPage: any =  VerifyregisterPage
 
   pages: Array<{title: string, component: any}>;
   isLoggedIn: any;
@@ -45,8 +51,16 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.isLoggedIn = this.sharedProvider.isLoggedIn();
-      if(this.isLoggedIn){
-        this.nav.setRoot(NameDesignationPage);
+      console.log(this.isLoggedIn);
+      if(this.isLoggedIn=='company'){
+        this.nav.setRoot(SubmitdocumentPage)
+      }else if(this.isLoggedIn=='otp'){
+        this.nav.setRoot(VerifyregisterPage);
+      }
+      else if(this.isLoggedIn=='log'){
+        this.nav.setRoot(DashboardPage)
+      }else{
+        this.nav.setRoot(HomePage)
       }
     });
   }

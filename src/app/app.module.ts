@@ -3,6 +3,15 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { AndroidFullScreen } from '@ionic-native/android-full-screen';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions';
+import { File } from '@ionic-native/file';
+import { FileChooser } from '@ionic-native/file-chooser';
+import { IOSFilePicker } from '@ionic-native/file-picker';
+import { DocumentPicker } from '@ionic-native/document-picker';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
@@ -19,12 +28,6 @@ import { LoanrequirementPage } from '../pages/loanrequirement/loanrequirement';
 import { StartoperationsPage } from '../pages/startoperations/startoperations';
 import { EntitylocatedPage } from '../pages/entitylocated/entitylocated';
 import { EntityactivityPage } from '../pages/entityactivity/entityactivity';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { AndroidFullScreen } from '@ionic-native/android-full-screen';
-import { NativePageTransitions } from '@ionic-native/native-page-transitions';
-
 import { PandetailsPage } from '../pages/pandetails/pandetails';
 import { EntityturnoverPage } from '../pages/entityturnover/entityturnover';
 import { LoantermPage } from '../pages/loanterm/loanterm';
@@ -43,6 +46,8 @@ import { ListapplicationsPage } from '../pages/listapplications/listapplications
 import { ApplicationanswerPage } from '../pages/applicationanswer/applicationanswer';
 
 import { HttpModule } from '@angular/http';
+import { EntityProvider } from '../providers/entity/entity';
+import { LoanapplicationProvider } from '../providers/loanapplication/loanapplication';
 
 
 @NgModule({
@@ -122,9 +127,15 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     AndroidFullScreen,
     NativePageTransitions,
+    File,
+    FileChooser,
+    IOSFilePicker,
+    DocumentPicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    SharedProvider
+    SharedProvider,
+    EntityProvider,
+    LoanapplicationProvider
   ]
 })
 export class AppModule {}

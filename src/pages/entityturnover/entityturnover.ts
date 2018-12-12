@@ -33,7 +33,10 @@ export class EntityturnoverPage {
   }
 
   doEntityTurnover(){
-    console.log("Entity Turnover");
+    localStorage.setItem('salesTurnPan',this.entityturnover.value.pan);
+    localStorage.setItem('salesEntityYr',this.entityturnover.value.pan_year);
+    localStorage.setItem('salesTurnPat',this.entityturnover.value.pat);
+    localStorage.setItem('salesPatYr',this.entityturnover.value.pat_year);
     this.navCtrl.setRoot(LoanrequirementPage);
   }
 

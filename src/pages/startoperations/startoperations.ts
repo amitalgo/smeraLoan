@@ -34,7 +34,8 @@ export class StartoperationsPage {
 
   doOperations(){
     console.log("Operations");
-    this.navCtrl.setRoot(EntitytypePage);
+    localStorage.setItem('operationYear',this.operations.value.year);
+    this.navCtrl.push(EntitytypePage);
   }
 
 }

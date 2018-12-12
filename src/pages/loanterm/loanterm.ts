@@ -34,7 +34,10 @@ export class LoantermPage {
   }
 
   doLoanTerm(){
-    console.log("Long Term");
+    localStorage.setItem('termLoan',this.loanterm.value.loan_amount);
+    localStorage.setItem('wrkcapitalAmt',this.loanterm.value.capital_amount);
+    localStorage.setItem('otherFacType',this.loanterm.value.other_facility);
+    localStorage.setItem('otherFacAmt',this.loanterm.value.other_facility_amount);
     this.navCtrl.setRoot(PreferedbankPage);
   }
 

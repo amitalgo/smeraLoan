@@ -76,4 +76,16 @@ export class UserProvider {
     }) 
   }
 
+  updateUser(token, data){
+    return new Promise((resolve, reject)=>{
+      this.http.post(this.apiUrl+'controller=user&action=updateuser',JSON.stringify(data),{
+        headers: new HttpHeaders().set('Token',token).set('Accept','application/json').set('Content-Type','application/json')
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    })    
+  }
+
 }

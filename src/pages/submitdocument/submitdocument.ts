@@ -33,8 +33,12 @@ export class SubmitdocumentPage {
   }
 
   doSubmitDocuments(){
-    console.log("Submit Documents");
-    this.navCtrl.setRoot(TermsPage);
+    console.log(this.submitdocuments.value);
+    // this.navCtrl.setRoot(TermsPage);
+  }
+
+  uploadDocument(){
+
   }
 
 }

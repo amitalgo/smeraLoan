@@ -8,23 +8,23 @@
 
     <form [formGroup]="entityactivity" (ngSubmit)="doEntityActivity()" class="animated fadeInRight">
       
-        <ion-item class="activity">
+        <ion-item class="activity" no-lines>
         <ion-select [formControl]="entityactivity.controls['activity']" placeholder="Select Activity" interface="popover">
-            <ion-option value="2018">2018</ion-option>
-            <ion-option value="2017">2017</ion-option>
+            <ion-option value="activity_1">Activity 1</ion-option>
+            <ion-option value="activity_2">Activity 2</ion-option>
           </ion-select>
         </ion-item>
 
         
-        <ion-item class="industry">
+        <ion-item class="industry" no-lines>
         <ion-select [formControl]="entityactivity.controls['industry']" placeholder="Select Industry" interface="popover">
-            <ion-option value="2018">2018</ion-option>
-            <ion-option value="2017">2017</ion-option>
+            <ion-option value="industry_1">Industry 1</ion-option>
+            <ion-option value="industry_2">Industry 2</ion-option>
           </ion-select>
         </ion-item>
 
         
-        <button ion-button [disabled]="!entityactivity.valid" type="submit" float-right ion-button round outline small>DONE</button>
+        <button ion-button [disabled]="!entityactivity.valid" type="submit" float-right ion-button round small>DONE</button>
           
     </form>
   </ion-grid>

@@ -24,11 +24,10 @@ export class PasswordPage {
     this.submit = this.formBuilder.group({
       password: ['', Validators.required],
     });
-
   }
 
   doSubmit(){
-    console.log('submit');
+    localStorage.setItem('password',this.submit.value.password);
     this.navCtrl.setRoot(NameDesignationPage);
   }
 

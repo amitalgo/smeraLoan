@@ -24,10 +24,9 @@ export class EntitytypePage {
     console.log('ionViewDidLoad EntitytypePage');
   }
 
-  doEntityType(val){
-    console.log("Entity Type");
-    console.log(val);
-    this.navCtrl.setRoot(EntitylocatedPage);
+  doEntityType(enType){
+    localStorage.setItem('entityType',enType);
+    this.navCtrl.push(EntitylocatedPage);
   }
 
 }
