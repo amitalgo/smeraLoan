@@ -6,48 +6,64 @@
         </ion-col>
       </ion-row>
   
-      <form [formGroup]="submitdocuments" (ngSubmit)="doSubmitDocuments()" class="animated fadeInRight">
-          <ion-row>
-              <ion-col>
-                  <ion-item class="identity_proof" no-lines>
-                  <ion-select [formControl]="submitdocuments.controls['identity_proof']" placeholder="Select your Identity Proof"  interface="popover">
-                      <ion-option value="Aadhaar">Aadhaar</ion-option>
-                      <ion-option value="PAN">PAN</ion-option>
-                    </ion-select>
-                  </ion-item>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <button type="submit" ion-button full>Upload</button>
-              </ion-col>
-            </ion-row>
-        
+     
+        <ion-item class="documentType" no-lines>
+          <ion-select #identity placeholder="Select your Identity Proof"  >
+            <ion-option value="Aadhaar">Aadhaar</ion-option>
+            <ion-option value="PAN">PAN</ion-option>
+          </ion-select>
+        </ion-item>
 
         <ion-row>
-            <ion-col>
-                <ion-item class="address_proof" no-lines>
-                <ion-select [formControl]="submitdocuments.controls['address_proof']" placeholder="Select your Address Proof" interface="popover">
-                    <ion-option value="Office">Office</ion-option>
-                  </ion-select>
-                </ion-item>
+            <ion-col col-5>
+                <button float-left round small outline ion-button>Choose</button>
             </ion-col>
-          </ion-row>
-          
+          <ion-col col-5>
+            <button float-left round small (click)="doSubmitDocuments(identity)" outline ion-button>Upload</button>
+          </ion-col>
+        </ion-row>
 
-          <ion-row>
-              <ion-col>
-                  <ion-item class="financial" no-lines>
-                  <ion-select [formControl]="submitdocuments.controls['financial']" placeholder="Select your Financial Documents" interface="popover">
-                      <ion-option value="Financials">Financials</ion-option>
-                      <ion-option value="Promoter">Promoter</ion-option>
-                    </ion-select>
-                  </ion-item>
-              </ion-col>
-            </ion-row>
+        <ion-item class="documentType" no-lines>
+        <ion-select #address placeholder="Select your Address Proof">
+            <ion-option value="light_bill">Light Bill</ion-option>
+            <ion-option value="ration">Ration Card</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-row>
+            <ion-col col-5>
+                <button float-left round small outline ion-button>Choose</button>
+            </ion-col>
+          <ion-col col-5>
+            <button float-left round small (click)="doSubmitDocuments(address)" outline ion-button>Upload</button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+              <ion-item class="documentType" no-lines>
+              <ion-select #financial placeholder="Select your Financial Proof">
+                  <ion-option value="financial1">Financial 1</ion-option>
+                  <ion-option value="financial2">Financial 2</ion-option>
+                </ion-select>
+              </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-5>
+              <button float-left round small outline ion-button>Choose</button>
+          </ion-col>
+          <ion-col col-5>
+            <button float-left round small (click)="doSubmitDocuments(financial)" outline ion-button>Upload</button>
+          </ion-col>
+        </ion-row>
   
-        <button ion-button [disabled]="!submitdocuments.valid" type="submit" float-right ion-button round small>Okay</button>
+        <ion-row>
+          <ion-col>
+            <button float-right ion-button round small>Okay</button>
+          </ion-col>
+        </ion-row>
   
-      </form>
+      
     </ion-grid>
   </ion-content>

@@ -76,6 +76,10 @@ export class SharedProvider {
     }
   }
 
+  public getToken(){
+    return localStorage.getItem('token')
+  }
+
   public clearLocalStorage() {
     localStorage.clear()
     return true

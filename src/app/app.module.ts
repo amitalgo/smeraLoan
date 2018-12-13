@@ -11,6 +11,7 @@ import { File } from '@ionic-native/file';
 import { FileChooser } from '@ionic-native/file-chooser';
 import { IOSFilePicker } from '@ionic-native/file-picker';
 import { DocumentPicker } from '@ionic-native/document-picker';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -45,9 +46,9 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { ListapplicationsPage } from '../pages/listapplications/listapplications';
 import { ApplicationanswerPage } from '../pages/applicationanswer/applicationanswer';
 
-import { HttpModule } from '@angular/http';
 import { EntityProvider } from '../providers/entity/entity';
 import { LoanapplicationProvider } from '../providers/loanapplication/loanapplication';
+import { SubmitdocumentProvider } from '../providers/submitdocument/submitdocument';
 
 
 @NgModule({
@@ -135,7 +136,8 @@ import { LoanapplicationProvider } from '../providers/loanapplication/loanapplic
     UserProvider,
     SharedProvider,
     EntityProvider,
-    LoanapplicationProvider
+    LoanapplicationProvider,
+    SubmitdocumentProvider
   ]
 })
 export class AppModule {}

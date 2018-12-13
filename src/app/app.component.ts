@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -24,14 +24,19 @@ import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =  VerifyregisterPage
+  rootPage: any =  SubmitdocumentPage
 
   pages: Array<{title: string, component: any}>;
   isLoggedIn: any;
   token:any;
+  users:any;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public sharedProvider: SharedProvider,public splashScreen: SplashScreen,private userProvider:UserProvider) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public sharedService:SharedProvider,public sharedProvider: SharedProvider,public splashScreen: SplashScreen,private userProvider:UserProvider,public events: Events) {
     this.initializeApp();
+
+    events.subscribe('user:updated',()=>{
+      this.users = this.sharedService.getUserInfo()
+    })
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -55,12 +60,12 @@ export class MyApp {
       if(this.isLoggedIn=='company'){
         this.nav.setRoot(SubmitdocumentPage)
       }else if(this.isLoggedIn=='otp'){
-        this.nav.setRoot(VerifyregisterPage);
+        this.nav.setRoot(SubmitdocumentPage);
       }
       else if(this.isLoggedIn=='log'){
         this.nav.setRoot(DashboardPage)
       }else{
-        this.nav.setRoot(HomePage)
+        this.nav.setRoot(SubmitdocumentPage)
       }
     });
   }

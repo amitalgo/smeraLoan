@@ -35,18 +35,19 @@ export class RegisterPage {
 
   doRegister(){
     console.log('register');
+    this.sharedProvider.showLoader()
     this.register.value['employee_rights']=0
     this.register.value['status']="pending"
 
     this.userProvider.register(this.register.value).then(result => {
-      // this.sharedProvider.dismissLoader()
+      this.sharedProvider.dismissLoader()
       this.response = result
       localStorage.setItem('email',this.register.value.email)
       localStorage.setItem('mobile',this.register.value.mobile)
       this.navCtrl.push(VerifyregisterPage);
     }).catch(err => {
       console.log(err)
-      // this.sharedProvider.dismissLoader()
+      this.sharedProvider.dismissLoader()
     });    
   }
 

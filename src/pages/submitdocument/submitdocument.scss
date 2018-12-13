@@ -1,3 +1,12 @@
 page-submitdocument {
-
-}
+    ion-select{
+        max-width: 100% !important;
+    }
+    .select-md .select-icon {
+        position: relative;
+        width: 12px;
+        height: 19px;
+        float: right;
+        margin-left: 59px;
+    }
+}   
