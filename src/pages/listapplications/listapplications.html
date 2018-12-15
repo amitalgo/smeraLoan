@@ -20,52 +20,21 @@
   <ion-content>
 
     <ion-grid>
-      <ion-row>
-        <ion-col col-4 (click)="previewAnswer()">
-          <button ion-button block class="but">
-            <div>
-              <!-- <ion-icon name="flash"  ></ion-icon> -->
-              <div class="avatar">
-                <ion-avatar item-start>
-                  <img src="assets/imgs/document.png" alt="">  
-                </ion-avatar>
-              </div>
-              <div class="text">
-                <label>Flash</label>
-              </div>
-            </div>
-        </button> 
-        </ion-col>
-        <ion-col col-4 (click)="previewAnswer()">
+      <ion-row *ngIf="applications">
+          <ion-col col-4 *ngFor="let application of applications;let i = index" (click)="previewAnswer(application.la_id,application.qc_id)">
             <button ion-button block class="but">
               <div>
-                <!-- <ion-icon name="flash"  ></ion-icon> -->
                 <div class="avatar">
                   <ion-avatar item-start>
-                    <img src="assets/imgs/document.png" alt="">  
+                    <img src="assets/imgs/document.png" alt="Application">  
                   </ion-avatar>
                 </div>
                 <div class="text">
-                  <label>Flash</label>
+                  <label>Application {{ i + 1}}</label>
                 </div>
               </div>
           </button> 
           </ion-col>
-          <ion-col col-4 (click)="previewAnswer()">
-              <button ion-button block class="but">
-                <div>
-                  <!-- <ion-icon name="flash"  ></ion-icon> -->
-                  <div class="avatar">
-                    <ion-avatar item-start>
-                      <img src="assets/imgs/document.png" alt="">  
-                    </ion-avatar>
-                  </div>
-                  <div class="text">
-                    <label>Flash</label>
-                  </div>
-                </div>
-            </button> 
-            </ion-col>
         <!-- <ion-col col-4>
           <button ion-button>
             <div>
@@ -81,7 +50,7 @@
 
       <ion-row>
           <ion-col col-4>
-            <button float-left ion-button round small>Add</button>
+            <button float-left ion-button round small (click)="getAllApplication()">Add</button>
           </ion-col>
       </ion-row>
     </ion-grid>

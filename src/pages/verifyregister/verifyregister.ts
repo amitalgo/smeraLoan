@@ -59,7 +59,7 @@ export class VerifyregisterPage {
       localStorage.setItem('memberId',this.response.member_id)
       localStorage.setItem('email', this.response.email)
       this.event.publish('user:updated',[])
-      this.navCtrl.setRoot(PasswordPage)
+      this.navCtrl.push(PasswordPage)
     }).catch(err=>{
       // this.sharedProvider.dismissLoader()
       console.log(err)

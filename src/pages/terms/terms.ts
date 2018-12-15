@@ -24,7 +24,7 @@ export class TermsPage {
   }
 
   doContinue(){
-    this.navCtrl.setRoot(ThankyouPage);
+    this.navCtrl.push(ThankyouPage);
   }
 
 }

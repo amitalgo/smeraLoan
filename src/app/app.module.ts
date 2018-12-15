@@ -49,6 +49,9 @@ import { ApplicationanswerPage } from '../pages/applicationanswer/applicationans
 import { EntityProvider } from '../providers/entity/entity';
 import { LoanapplicationProvider } from '../providers/loanapplication/loanapplication';
 import { SubmitdocumentProvider } from '../providers/submitdocument/submitdocument';
+import { ChangepasswordPage } from '../pages/changepassword/changepassword';
+import { PasswordValidationProvider } from '../providers/password-validation/password-validation';
+import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
 
 
 @NgModule({
@@ -82,7 +85,9 @@ import { SubmitdocumentProvider } from '../providers/submitdocument/submitdocume
     LoginPage,
     DashboardPage,
     ListapplicationsPage,
-    ApplicationanswerPage
+    ApplicationanswerPage,
+    ChangepasswordPage,
+    ForgotpasswordPage
   ],
   imports: [
     BrowserModule,
@@ -121,7 +126,9 @@ import { SubmitdocumentProvider } from '../providers/submitdocument/submitdocume
     LoginPage,
     DashboardPage,
     ListapplicationsPage,
-    ApplicationanswerPage
+    ApplicationanswerPage,
+    ChangepasswordPage,
+    ForgotpasswordPage
   ],
   providers: [
     StatusBar,
@@ -137,7 +144,8 @@ import { SubmitdocumentProvider } from '../providers/submitdocument/submitdocume
     SharedProvider,
     EntityProvider,
     LoanapplicationProvider,
-    SubmitdocumentProvider
+    SubmitdocumentProvider,
+    PasswordValidationProvider
   ]
 })
 export class AppModule {}

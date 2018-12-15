@@ -19,12 +19,14 @@ import { EntitytypePage } from '../entitytype/entitytype';
 export class StartoperationsPage {
 
   private operations: FormGroup;
+  public data : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
     this.operations = this.formBuilder.group({
       year:['',Validators.required]
     });  
-
+    this.data=navParams.get('laId'); 
+    console.log(this.data);
     
   }
 

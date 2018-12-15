@@ -26,12 +26,12 @@ export class FewdocumentPage {
 
   doProceed(){
     console.log("submit few documents");
-    this.navCtrl.setRoot(SubmitdocumentPage);
+    this.navCtrl.push(SubmitdocumentPage);
   }
 
   doNotNow(){
     console.log("Not Now Submit Few Document");
-    this.navCtrl.setRoot(TermsPage);
+    this.navCtrl.push(TermsPage);
   }
 
 }

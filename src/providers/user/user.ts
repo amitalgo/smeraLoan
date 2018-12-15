@@ -88,4 +88,27 @@ export class UserProvider {
     })    
   }
 
+  updatePassword(token, data){
+    return new Promise((resolve, reject)=>{
+      this.http.post(this.apiUrl+'controller=user&action=changepassword',JSON.stringify(data),{
+        headers: new HttpHeaders().set('Content-Type','application/json').set('Accept','application/json').set('Token', token)
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    })    
+  }
+
+  forgotPassword(data){
+    return new Promise((resolve, reject)=>{
+      this.http.post(this.apiUrl+'controller=user&action=forgotpassword',JSON.stringify(data),{
+        headers: new HttpHeaders().set('Content-Type','application/json').set('Accept','application/json')
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    })   
+  }
 }

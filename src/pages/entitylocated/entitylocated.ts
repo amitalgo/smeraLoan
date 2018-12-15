@@ -36,7 +36,7 @@ export class EntitylocatedPage {
     localStorage.setItem('address',this.entitylocated.value.address);
     localStorage.setItem('city',this.entitylocated.value.city);
     localStorage.setItem('pincode',this.entitylocated.value.pincode);
-    this.navCtrl.setRoot(EntityactivityPage);
+    this.navCtrl.push(EntityactivityPage);
   }
 
 }

@@ -1,3 +1,7 @@
+<ion-header>
+    <ion-navbar color="white">
+    </ion-navbar>
+</ion-header>
 <ion-content>
   <ion-grid class="content">
     <ion-row>
@@ -10,16 +14,17 @@
       <ion-grid>
           <ion-row>
             <ion-col>
-                <ion-item>
-                    <button ion-button float-right ion-button round small>Yet to start my operations</button>
+                <ion-item no-lines>
+                    <!-- <button ion-button float-right ion-button round small>Yet to start my operations</button> -->
+                    <label for="Yet to start my operations" float-right>Yet to start my operations</label>
                   </ion-item>
             </ion-col>
           </ion-row>
           
           <ion-row>
             <ion-col>
-                <ion-item class="year">
-                <ion-select [formControl]="operations.controls['year']" placeholder="Select Year" interface="popover">
+                <ion-item no-lines>
+                <ion-select [formControl]="operations.controls['year']" placeholder="Select Year">
                     <ion-option value="2018">2018</ion-option>
                     <ion-option value="2017">2017</ion-option>
                   </ion-select>

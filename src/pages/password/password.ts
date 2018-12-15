@@ -28,7 +28,7 @@ export class PasswordPage {
 
   doSubmit(){
     localStorage.setItem('password',this.submit.value.password);
-    this.navCtrl.setRoot(NameDesignationPage);
+    this.navCtrl.push(NameDesignationPage);
   }
 
   ionViewDidLoad() {

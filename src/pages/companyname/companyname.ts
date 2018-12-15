@@ -41,6 +41,7 @@ export class CompanynamePage {
     this.userProvider.updateUser(this.token,this.company.value).then(result => {
       this.sharedProvider.dismissLoader();
     this.response = result
+    localStorage.removeItem('otp');
     localStorage.setItem('company',this.company.value.company_name);
     this.navCtrl.push(ThatsnicePage);
     }).catch(err => {

@@ -36,3 +36,40 @@
 .danger{
     color:red;
 }
+
+
+// For Dropdown Select Box
+ion-select{
+    max-width: 100% !important;
+}
+.select-md .select-icon {
+    position: absolute;
+    right: 30px;
+}
+
+ion-select{
+    button{
+        .button-inner{
+            border: 1px solid color($colors,primary);
+            border-radius: 34px;
+        }   
+    }    
+} 
+
+
+// For Header 
+.tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+    background-image:none !important;
+}
+
+.screen_centre {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.title{
+    padding:10px;
+    text-align: center;
+}

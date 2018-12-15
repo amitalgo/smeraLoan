@@ -25,7 +25,7 @@ export class ThatsnicePage {
   }
 
   doProceed(){
-      this.navCtrl.setRoot(LastAnswerPage);
+      this.navCtrl.push(LastAnswerPage);
   }
 
 }

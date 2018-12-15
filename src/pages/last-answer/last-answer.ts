@@ -24,7 +24,7 @@ export class LastAnswerPage {
   }
 
   doLastAnswer(){
-    this.navCtrl.setRoot(StartoperationsPage);
+    this.navCtrl.push(StartoperationsPage);
   }
 
 }

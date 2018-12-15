@@ -32,7 +32,7 @@ export class NameDesignationPage {
   doNameDes(){
     localStorage.setItem('name',this.namedes.value.name);
     localStorage.setItem('designation',this.namedes.value.designation);
-    this.navCtrl.setRoot(CompanynamePage);
+    this.navCtrl.push(CompanynamePage);
   }
 
   ionViewDidLoad() {

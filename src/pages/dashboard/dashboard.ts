@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 import { ListapplicationsPage } from '../listapplications/listapplications';
 
 /**
@@ -16,7 +16,11 @@ import { ListapplicationsPage } from '../listapplications/listapplications';
 })
 export class DashboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private menuCtrl:MenuController ) {
+  }
+
+  ionViewWillEnter () {
+    this.menuCtrl.enable (true, "myMenu");
   }
 
   ionViewDidLoad() {

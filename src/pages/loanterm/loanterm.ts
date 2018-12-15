@@ -38,7 +38,7 @@ export class LoantermPage {
     localStorage.setItem('wrkcapitalAmt',this.loanterm.value.capital_amount);
     localStorage.setItem('otherFacType',this.loanterm.value.other_facility);
     localStorage.setItem('otherFacAmt',this.loanterm.value.other_facility_amount);
-    this.navCtrl.setRoot(PreferedbankPage);
+    this.navCtrl.push(PreferedbankPage);
   }
 
 }

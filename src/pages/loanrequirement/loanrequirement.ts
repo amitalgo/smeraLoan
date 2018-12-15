@@ -25,7 +25,7 @@ export class LoanrequirementPage {
 
   doProceed(){
     console.log('loan requirements');
-    this.navCtrl.setRoot(LoantermPage);
+    this.navCtrl.push(LoantermPage);
   }
 
 }

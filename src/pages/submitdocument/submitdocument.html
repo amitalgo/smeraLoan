@@ -1,11 +1,14 @@
+<ion-header>
+    <ion-navbar color="white">
+    </ion-navbar>
+</ion-header>
 <ion-content>
     <ion-grid class="content">
       <ion-row>
         <ion-col>
           <h6>Select and upload all that is available</h6>
         </ion-col>
-      </ion-row>
-  
+      </ion-row>  
      
         <ion-item class="documentType" no-lines>
           <ion-select #identity placeholder="Select your Identity Proof"  >
@@ -14,12 +17,16 @@
           </ion-select>
         </ion-item>
 
+        <ion-item no-lines *ngIf="identityy">
+          <ion-label>1 File Selected</ion-label>  
+        </ion-item>        
+
         <ion-row>
             <ion-col col-5>
-                <button float-left round small outline ion-button>Choose</button>
+                <button float-left round small (click)="doChooseDocuments(identity,'iden')" outline ion-button>Choose</button>
             </ion-col>
           <ion-col col-5>
-            <button float-left round small (click)="doSubmitDocuments(identity)" outline ion-button>Upload</button>
+            <button float-left round small (click)="doUploadDocuments()" outline ion-button>Upload</button>
           </ion-col>
         </ion-row>
 
@@ -32,12 +39,16 @@
 
         <ion-row>
             <ion-col col-5>
-                <button float-left round small outline ion-button>Choose</button>
+                <button float-left round small (click)="doChooseDocuments(address,'add')" outline ion-button>Choose</button>
             </ion-col>
           <ion-col col-5>
-            <button float-left round small (click)="doSubmitDocuments(address)" outline ion-button>Upload</button>
+            <button float-left round small (click)="doUploadDocuments()" outline ion-button>Upload</button>
           </ion-col>
         </ion-row>
+
+        <ion-item no-lines *ngIf="addresss">
+          <ion-label>1 File Selected</ion-label>  
+        </ion-item>
 
         <ion-row>
           <ion-col>
@@ -51,19 +62,22 @@
         </ion-row>
         <ion-row>
           <ion-col col-5>
-              <button float-left round small outline ion-button>Choose</button>
+              <button float-left round small outline (click)="doChooseDocuments(financial,'fin')" ion-button>Choose</button>
           </ion-col>
           <ion-col col-5>
-            <button float-left round small (click)="doSubmitDocuments(financial)" outline ion-button>Upload</button>
+            <button float-left round small (click)="doUploadDocuments()" outline ion-button>Upload</button>
           </ion-col>
         </ion-row>
+
+        <ion-item no-lines *ngIf="financiall">
+          <ion-label>1 File Selected</ion-label>  
+        </ion-item>
   
         <ion-row>
           <ion-col>
-            <button float-right ion-button round small>Okay</button>
+            <button float-right ion-button round (click)="doProceed()" small>Okay</button>
           </ion-col>
-        </ion-row>
-  
+        </ion-row> 
       
     </ion-grid>
   </ion-content>

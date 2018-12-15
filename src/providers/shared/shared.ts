@@ -15,7 +15,6 @@ export class SharedProvider {
   member: any;
   token: any;
   otp:any;
-  company:any;
 
   constructor(public http: HttpClient, private loadingCtrl: LoadingController, private toastCtrl: ToastController) {
     console.log('Hello SharedProvider Provider');
@@ -64,13 +63,10 @@ export class SharedProvider {
   public isLoggedIn() {
     this.token = localStorage.getItem('token')
     this.otp = localStorage.getItem('otp')
-    this.company = localStorage.getItem('company')
-    if (this.token && this.otp && this.company) {
-      return 'company';
-    }else if(this.token && this.otp){
+    if(this.otp){
       return 'otp';
     }else if(this.token){
-      return 'log';
+      return true;
     }else{
       return false;
     }

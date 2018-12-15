@@ -37,7 +37,7 @@ export class EntityturnoverPage {
     localStorage.setItem('salesEntityYr',this.entityturnover.value.pan_year);
     localStorage.setItem('salesTurnPat',this.entityturnover.value.pat);
     localStorage.setItem('salesPatYr',this.entityturnover.value.pat_year);
-    this.navCtrl.setRoot(LoanrequirementPage);
+    this.navCtrl.push(LoanrequirementPage);
   }
 
 }

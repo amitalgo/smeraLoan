@@ -17,6 +17,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { StartoperationsPage } from '../pages/startoperations/startoperations';
 import { EntityturnoverPage } from '../pages/entityturnover/entityturnover';
 import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
+import { ChangepasswordPage } from '../pages/changepassword/changepassword';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +25,7 @@ import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =  SubmitdocumentPage
+  rootPage: any =  HomePage
 
   pages: Array<{title: string, component: any}>;
   isLoggedIn: any;
@@ -41,10 +42,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Profile', component: HomePage },
-      { title: 'Application Status', component: ListPage },
-      { title: 'Banker Interests', component: ListPage },
+      { title: 'Application Status', component: DashboardPage },
       { title: 'Notifications', component: ListPage },
-      { title: 'Change Password', component: ListPage }
+      { title: 'Change Password', component: ChangepasswordPage }
     ];
 
   }
@@ -56,16 +56,12 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.isLoggedIn = this.sharedProvider.isLoggedIn();
-      console.log(this.isLoggedIn);
-      if(this.isLoggedIn=='company'){
-        this.nav.setRoot(SubmitdocumentPage)
-      }else if(this.isLoggedIn=='otp'){
-        this.nav.setRoot(SubmitdocumentPage);
-      }
-      else if(this.isLoggedIn=='log'){
-        this.nav.setRoot(DashboardPage)
+      if(this.isLoggedIn=='otp'){
+        this.nav.setRoot(PasswordPage)
+      }else if(this.isLoggedIn){
+        this.nav.setRoot(DashboardPage);
       }else{
-        this.nav.setRoot(SubmitdocumentPage)
+        this.nav.setRoot(HomePage);
       }
     });
   }

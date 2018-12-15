@@ -1,3 +1,8 @@
+<ion-header>
+    <ion-navbar color="white">
+    </ion-navbar>
+</ion-header>
+
 <ion-content>
   <ion-grid class="content">
     <ion-row>
@@ -9,7 +14,7 @@
     <form [formGroup]="entityactivity" (ngSubmit)="doEntityActivity()" class="animated fadeInRight">
       
         <ion-item class="activity" no-lines>
-        <ion-select [formControl]="entityactivity.controls['activity']" placeholder="Select Activity" interface="popover">
+        <ion-select [formControl]="entityactivity.controls['activity']" placeholder="Select Activity">
             <ion-option value="activity_1">Activity 1</ion-option>
             <ion-option value="activity_2">Activity 2</ion-option>
           </ion-select>
@@ -17,9 +22,8 @@
 
         
         <ion-item class="industry" no-lines>
-        <ion-select [formControl]="entityactivity.controls['industry']" placeholder="Select Industry" interface="popover">
-            <ion-option value="industry_1">Industry 1</ion-option>
-            <ion-option value="industry_2">Industry 2</ion-option>
+        <ion-select [formControl]="entityactivity.controls['industry']" placeholder="Select Industry">
+            <ion-option value="{{ industry.subindustry_name }}" *ngFor="let industry of industries">{{ industry.subindustry_name }}</ion-option>
           </ion-select>
         </ion-item>
 

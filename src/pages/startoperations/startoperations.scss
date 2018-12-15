@@ -1,5 +1,9 @@
 page-startoperations {
-    .year{
-        max-width: 70% !important;
+    // .year{
+    //     max-width: 70% !important;
+    // }
+
+    .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
+        background-image:none !important;
     }
 }
