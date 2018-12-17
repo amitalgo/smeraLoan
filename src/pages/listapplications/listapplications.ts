@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angula
 import { ApplicationanswerPage } from '../applicationanswer/applicationanswer';
 import { SharedProvider } from '../../providers/shared/shared';
 import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the ListapplicationsPage page.
@@ -48,12 +49,12 @@ export class ListapplicationsPage {
     console.log('ionViewDidLoad ListapplicationsPage');
   }
 
-  previewAnswer(la_id,qc_id){
+  previewAnswer(lr_id,la_id,qc_id){
 
     this.sharedProvider.showLoader()
-    this.loanApplicationProvider.getQuestionariesAnswer(this.token,{"laId":la_id,"qcId":qc_id}).then(result=>{
+    this.loanApplicationProvider.getQuestionariesAnswer(this.token,{"lrId":lr_id,"laId":la_id,"qcId":qc_id}).then(result=>{
       this.sharedProvider.dismissLoader()
-      this.navCtrl.push(ApplicationanswerPage,{
+      this.navCtrl.setRoot(ApplicationanswerPage,{
         "questions":result
       }); 
     }).catch(err=>{
@@ -62,6 +63,10 @@ export class ListapplicationsPage {
       console.log('Inside Error');
       console.log(err);
     });
+  }
+
+  goBack(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

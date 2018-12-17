@@ -4,6 +4,12 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { ListapplicationsPage } from '../listapplications/listapplications';
 import { StartoperationsPage } from '../startoperations/startoperations';
+import { EntitytypePage } from '../entitytype/entitytype';
+import { EntitylocatedPage } from '../entitylocated/entitylocated';
+import { EntityactivityPage } from '../entityactivity/entityactivity';
+import { PandetailsPage } from '../pandetails/pandetails';
+import { EntityturnoverPage } from '../entityturnover/entityturnover';
+import { LoantermPage } from '../loanterm/loanterm';
 /**
  * Generated class for the ApplicationanswerPage page.
  *
@@ -18,14 +24,18 @@ import { StartoperationsPage } from '../startoperations/startoperations';
 })
 export class ApplicationanswerPage {
   information: any[];
+  pages : any = {
+    'StartoperationsPage' : StartoperationsPage,
+    'EntitytypePage' : EntitytypePage,
+    'EntitylocatedPage' : EntitylocatedPage,
+    'EntityactivityPage' : EntityactivityPage,
+    'PandetailsPage' : PandetailsPage,
+    'EntityturnoverPage' : EntityturnoverPage,
+    'LoantermPage' : LoantermPage,
+  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http,private menuCtrl:MenuController) {
-    // let localData = this.http.get('assets/information.json').map(res => res.json().items);
-    // localData.subscribe(data=>{
-    //     this.information=data;
-    // });
     this.information=navParams.get('questions');    
-    console.log(this.information);
   }
 
   ionViewWillEnter () {
@@ -40,14 +50,14 @@ export class ApplicationanswerPage {
     this.information[i].children[j].open = !this.information[i].children[j].open;
   }
 
-  editQuestion(page,laId,qcId){
-    console.log("Page is" +page);
-    console.log('La Id is :' +laId);
-    console.log('Qc Id is:' +qcId);
-
-    this.navCtrl.push(page,{
-        "laId":laId,
-        "qcId":qcId
+  editQuestion(page,lrId,laId,qcId){
+    // console.log("Page is" + page);
+    // console.log('La Id is :' +laId);
+    // console.log('Qc Id is:' +qcId);
+    this.navCtrl.push(this.pages[page],{
+      "lrId":lrId,
+      "laId":laId,
+      "qcId":qcId
     });
   }
 
@@ -56,7 +66,8 @@ export class ApplicationanswerPage {
   }
 
   goBack(){
-    this.navCtrl.push(ListapplicationsPage)
+    // console.log("Go Back Button");
+    this.navCtrl.setRoot(ListapplicationsPage);
   }
 
 }

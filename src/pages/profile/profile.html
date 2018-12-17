@@ -1,0 +1,41 @@
+<ion-footer>
+    <ion-navbar color="white">
+      <button ion-button menuToggle right>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-navbar>
+  </ion-footer>
+  
+  <ion-header>
+      <ion-navbar color="white">
+          <ion-buttons left (click)="goBack()">
+              <button ion-button icon-only>
+                  <ion-icon name="arrow-back"></ion-icon>
+              </button>
+          </ion-buttons>
+          <ion-title>Profile</ion-title>
+      </ion-navbar>
+  </ion-header>
+  
+  <ion-content>
+      <ion-grid class="content">      
+      
+          <form [formGroup]="profileForm" (ngSubmit)="doUpdateProfile()" class="animated fadeInRight">
+            <ion-item>
+              <ion-input type="text" placeholder="Enter Full Name" [formControl]="profileForm.controls['name']"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input type="text" placeholder="Enter Designation" [formControl]="profileForm.controls['designation']"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" placeholder="Enter Company Name" [formControl]="profileForm.controls['company_name']"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" placeholder="Enter Mobile No" [formControl]="profileForm.controls['mobile']"></ion-input>
+            </ion-item>
+
+            <button ion-button [disabled]="!profileForm.valid" type="submit" float-right ion-button round small>DONE</button>
+      
+          </form>
+        </ion-grid>
+  </ion-content>

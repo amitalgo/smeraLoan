@@ -8,7 +8,7 @@
   
   <ion-header>
       <ion-navbar color="white" class="centre">
-        <ion-buttons left>
+        <ion-buttons left (click)="goBack()">
               <button ion-button icon-only>
                   <ion-icon name="arrow-back"></ion-icon>
               </button>
@@ -21,7 +21,7 @@
 
     <ion-grid>
       <ion-row *ngIf="applications">
-          <ion-col col-4 *ngFor="let application of applications;let i = index" (click)="previewAnswer(application.la_id,application.qc_id)">
+          <ion-col col-4 *ngFor="let application of applications;let i = index" (click)="previewAnswer(application.lr_id,application.la_id,application.qc_id)">
             <button ion-button block class="but">
               <div>
                 <div class="avatar">

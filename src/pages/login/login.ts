@@ -62,6 +62,7 @@ export class LoginPage {
       localStorage.setItem('email', this.memberResponse.email)
       localStorage.setItem('company_name', this.memberResponse.company_name)
       localStorage.setItem('designation',this.memberResponse.designation)
+      localStorage.setItem('password',this.memberResponse.password)
       this.event.publish('user:updated',[])
       this.navCtrl.setRoot(DashboardPage)
     }).catch(err=>{

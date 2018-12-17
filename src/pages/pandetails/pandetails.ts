@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { EntityturnoverPage } from '../entityturnover/entityturnover';
 import { SharedProvider } from '../../providers/shared/shared';
 import { EntityProvider } from '../../providers/entity/entity';
+import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
 
 
 /**
@@ -23,21 +24,48 @@ export class PandetailsPage {
   pandet: FormGroup;
   token : any;
   response : any;
+  laId : any;
+  qcId : any;
+  lrId : any;
+  action : any = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,private sharedProvider:SharedProvider,private entityProvider:EntityProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,private sharedProvider:SharedProvider,private entityProvider:EntityProvider,private loanApplicationProvider:LoanapplicationProvider) {
     this.pandet = this.formBuilder.group({
       pan: ['', Validators.required],
       gst: ['', Validators.required],
     });
+
+    this.laId=navParams.get('laId');    
+    this.qcId=navParams.get('qcId');
+    this.lrId=navParams.get('lrId');
+    this.token=localStorage.getItem('token');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PandetailsPage');
   }
 
+  ionViewWillEnter () {
+    if(this.lrId!='' && this.laId!='' && this.qcId!=''){
+      this.sharedProvider.showLoader()
+      this.loanApplicationProvider.getLoanApplicationById(this.token,{"lrId":this.lrId,"laId":this.laId,"qcId":this.qcId}).then(result=>{
+        this.sharedProvider.dismissLoader()
+        this.response=result
+        this.action=1
+        this.pandet.controls['pan'].setValue(this.response.signatory_pan)
+        this.pandet.controls['gst'].setValue(this.response.tan)
+        // this.navCtrl.popToRoot({ animate: true, direction: 'back' }) 
+      }).catch(err=>{
+        this.sharedProvider.dismissLoader()
+        this.sharedProvider.presentToast("Something went wrong!")
+        console.log('Inside Error');
+        console.log(err);
+      });
+    }
+  }
+
   doPanDet(){
     this.sharedProvider.showLoader();
-    this.token=localStorage.getItem('token');
     this.pandet.value['yearOfEst']=localStorage.getItem('operationYear');
     this.pandet.value['entityType']=localStorage.getItem('entityType');
     this.pandet.value['address']=localStorage.getItem('address');
@@ -52,6 +80,23 @@ export class PandetailsPage {
       localStorage.setItem('pan',this.pandet.value.pan);
       localStorage.setItem('gst',this.pandet.value.gst);
       this.navCtrl.push(EntityturnoverPage);
+    }).catch(err => {
+      console.log(err)
+      this.sharedProvider.dismissLoader();
+      this.sharedProvider.presentToast("Something went wrong")
+    });
+  }
+
+  doUpdateDet(){
+    console.log("Update Pan Function");
+    this.sharedProvider.showLoader();
+    this.entityProvider.updateEntity(this.token,this.pandet.value).then(result => {
+      this.sharedProvider.dismissLoader();
+      this.response = result
+      localStorage.setItem('pan',this.pandet.value.pan);
+      localStorage.setItem('gst',this.pandet.value.gst);
+      this.sharedProvider.presentToast(this.response.message)
+      this.navCtrl.popToRoot({ animate: true, direction: 'back',duration: 500  }) 
     }).catch(err => {
       console.log(err)
       this.sharedProvider.dismissLoader();

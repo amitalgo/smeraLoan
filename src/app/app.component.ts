@@ -18,6 +18,7 @@ import { StartoperationsPage } from '../pages/startoperations/startoperations';
 import { EntityturnoverPage } from '../pages/entityturnover/entityturnover';
 import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
 import { ChangepasswordPage } from '../pages/changepassword/changepassword';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
@@ -41,7 +42,7 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Profile', component: HomePage },
+      { title: 'Profile', component: ProfilePage },
       { title: 'Application Status', component: DashboardPage },
       { title: 'Notifications', component: ListPage },
       { title: 'Change Password', component: ChangepasswordPage }

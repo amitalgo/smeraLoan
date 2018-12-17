@@ -28,7 +28,7 @@ export class DashboardPage {
   }
 
   doListApplication(){
-    this.navCtrl.push(ListapplicationsPage)
+    this.navCtrl.setRoot(ListapplicationsPage)
   }
 
 }

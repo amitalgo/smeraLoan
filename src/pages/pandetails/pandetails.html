@@ -6,11 +6,11 @@
   <ion-grid class="content">
     <ion-row>
       <ion-col>
-        <h6>What is your Permanent Account Number (PAN) & GSTIN?</h6>
+        <h6>What is your Permanent Account Number (PAN) & GSTIN? {{ action }}</h6>
       </ion-col>
     </ion-row>
 
-    <form [formGroup]="pandet" (ngSubmit)="doPanDet()" class="animated fadeInRight" >
+    <form [formGroup]="pandet" (ngSubmit)="action > 0 ? doUpdateDet() : doPanDet()" class="animated fadeInRight" >
       <ion-item>
         <ion-input type="text" placeholder="Enter PAN here" [formControl]="pandet.controls['pan']"></ion-input>
       </ion-item>

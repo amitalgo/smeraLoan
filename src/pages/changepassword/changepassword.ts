@@ -43,6 +43,7 @@ export class ChangepasswordPage {
       this.sharedProvider.dismissLoader()
       this.response = result
       this.sharedProvider.presentToast(this.response.message)
+      localStorage.setItem('password',this.changePassword.value.password);
       this.changePassword.reset()
     }).catch(err=>{
       this.sharedProvider.dismissLoader()

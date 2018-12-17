@@ -8,8 +8,8 @@
   
   <ion-header>
       <ion-navbar color="white" class="centre">
-          <ion-buttons left>
-              <button ion-button icon-only (click)="goBack()">
+          <ion-buttons left (click)="goBack()">
+              <button ion-button icon-only>
                   <ion-icon name="arrow-back"></ion-icon>
               </button>
           </ion-buttons>
@@ -27,7 +27,7 @@
             <button ion-item (click)="toggleSection(i)" detail-none class="trans" [ngClass]="{'section-active': item.open, 'section': !item.open}">
               <ion-icon medium  class="toggleIcon" item-right name="ios-arrow-forward" *ngIf="!item.open"></ion-icon>
               <ion-icon medium class="toggleIcon" item-right name="ios-arrow-down" *ngIf="item.open"></ion-icon>
-              <ion-icon small style="color:grey" (click)="editQuestion(item.page,item.laId,item.qcId)" item-right name="ios-create" md="md-create"></ion-icon>
+              <ion-icon small style="color:grey" (click)="editQuestion(item.page,item.lrId,item.laId,item.qcId)" item-right name="ios-create" md="md-create"></ion-icon>
                 {{ item.question }}
             </button>
 
