@@ -18,7 +18,7 @@ export class LoanapplicationProvider {
 
   updateLoanApplication(token, data){
     return new Promise((resolve, reject)=>{
-      this.http.post(this.apiUrl+'controller=loanApplication&action=add',JSON.stringify(data),{
+      this.http.post(this.apiUrl+'controller=loanApplication&action=update',JSON.stringify(data),{
         headers: new HttpHeaders().set('Token',token).set('Accept','application/json').set('Content-Type','application/json')
       }).subscribe(res=>{
         resolve(res)
@@ -55,6 +55,18 @@ export class LoanapplicationProvider {
   getLoanApplicationById(token, data){
     return new Promise((resolve, reject)=>{
       this.http.post(this.apiUrl+'controller=loanApplication&action=getloanapplicationbyid',JSON.stringify(data),{
+        headers: new HttpHeaders().set('Token',token).set('Accept','application/json').set('Content-Type','application/json')
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    })    
+  }
+
+  addNewApplication(token, data){
+    return new Promise((resolve, reject)=>{
+      this.http.post(this.apiUrl+'controller=loanApplication&action=add',JSON.stringify(data),{
         headers: new HttpHeaders().set('Token',token).set('Accept','application/json').set('Content-Type','application/json')
       }).subscribe(res=>{
         resolve(res)

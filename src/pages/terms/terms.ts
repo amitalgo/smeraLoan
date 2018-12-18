@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ThankyouPage } from '../thankyou/thankyou';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 /**
  * Generated class for the TermsPage page.
@@ -16,12 +17,28 @@ import { ThankyouPage } from '../thankyou/thankyou';
 })
 export class TermsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  terms: FormGroup;
+  token : any;
+  response : any;
+  isenabled:boolean=false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
+    this.terms = this.formBuilder.group({
+      termVal: ['', Validators.required]
+    });
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TermsPage');
   }
+
+  datachanged(e:any){
+    if(e.checked){
+      this.isenabled=true; 
+    }else{
+      this.isenabled=false; 
+    }
+}
 
   doContinue(){
     this.navCtrl.push(ThankyouPage);

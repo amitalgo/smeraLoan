@@ -32,7 +32,7 @@ export class PreferedbankPage {
 
   doProceed(preferedBank){
     this.sharedProvider.showLoader();
-    this.data['salesTurnPan']=localStorage.getItem('salesTurnPan');
+    this.data['salesTurnOver']=localStorage.getItem('salesTurnOver');
     this.data['salesTurnPat']=localStorage.getItem('salesTurnPat');
     this.data['termLoan']=localStorage.getItem('termLoan');
     this.data['wrkcapitalAmt']=localStorage.getItem('wrkcapitalAmt');

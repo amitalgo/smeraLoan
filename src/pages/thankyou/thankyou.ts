@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the ThankyouPage page.
@@ -16,7 +17,10 @@ import { HomePage } from '../home/home';
 })
 export class ThankyouPage {
 
+  name : string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.name=localStorage.getItem('name');
   }
 
   ionViewDidLoad() {
@@ -24,7 +28,7 @@ export class ThankyouPage {
   }
 
   doSubmit(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

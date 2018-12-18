@@ -35,11 +35,11 @@ export class ApplicationanswerPage {
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http,private menuCtrl:MenuController) {
-    this.information=navParams.get('questions');    
   }
 
   ionViewWillEnter () {
     this.menuCtrl.enable (true, "myMenu");
+    this.information=this.navParams.get('questions');    
   }
 
   toggleSection(i) {

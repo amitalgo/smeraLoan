@@ -9,29 +9,54 @@
             <div><h6 class="centre">Choose your Entity Type</h6></div>
           </ion-col>
         </ion-row>
-
-    <div class="animated fadeInRight">
-      <ion-item no-lines>
-        <button ion-button (click)="doEntityType('public_limited')" ion-button round full>Public Limited</button>
-      </ion-item>
-      <ion-item no-lines>
-        <button ion-button (click)="doEntityType('llp')" ion-button round full>LLP</button>
-      </ion-item>
-      <ion-item no-lines>
-        <button ion-button (click)="doEntityType('partnership')" ion-button round full>Partnership</button>
-      </ion-item>
-      <ion-item no-lines>
-        <button ion-button (click)="doEntityType('huf')" ion-button round full>Hindu Undivided Family (HUF)</button>
-      </ion-item>
-      <ion-item no-lines>
-          <button ion-button (click)="doEntityType('private_limited')" ion-button round full>Private Limited</button>
-      </ion-item>
-      <ion-item no-lines>
-          <button ion-button (click)="doEntityType('sale_proprietorship')" ion-button round full>Sale Proprietorship</button>
-      </ion-item>
-      <ion-item no-lines>
-          <button ion-button (click)="doEntityType('society')" ion-button round full>Trust/Society/NGO/Non-Profit Organisationp</button>
-      </ion-item>
-    </div>
+        <!-- action > 0 ? doUpdateEntityType() : doEntityType() -->
+    <form [formGroup]="entityType" (ngSubmit)="doEntityType()" class="animated fadeInRight">
+      <div class="animated fadeInRight">
+          <ion-grid>              
+              <ion-row>
+                <ion-col>
+                    <ion-item no-lines>
+                    <ion-select [formControl]="entityType.controls['entity_type']" placeholder="Select Entity Type">
+                        <ion-option value="public_limited">Public Limited</ion-option>
+                        <ion-option value="llp">LLP</ion-option>
+                        <ion-option value="partnership">Partnership</ion-option>
+                        <ion-option value="huf">Hindu Undivided Family (HUF)</ion-option>
+                        <ion-option value="private_limited">Private Limited</ion-option>
+                        <ion-option value="sale_proprietorship">Sale Proprietorship</ion-option>
+                        <ion-option value="society">Trust/Society/NGO/Non-Profit Organisation</ion-option>
+                      </ion-select>
+                    </ion-item>
+                </ion-col>
+              </ion-row>  
+              
+              <ion-row>
+                <ion-col>
+                    <button ion-button [disabled]="!entityType.valid" type="submit" float-right ion-button round small>DONE</button>
+                </ion-col>
+              </ion-row>          
+          </ion-grid>
+        <!-- <ion-item no-lines>
+          <button ion-button (click)="doEntityType('public_limited')" ion-button round full>Public Limited</button>
+        </ion-item>
+        <ion-item no-lines>
+          <button ion-button (click)="doEntityType('llp')" ion-button round full>LLP</button>
+        </ion-item>
+        <ion-item no-lines>
+          <button ion-button (click)="doEntityType('partnership')" ion-button round full>Partnership</button>
+        </ion-item>
+        <ion-item no-lines>
+          <button ion-button (click)="doEntityType('huf')" ion-button round full>Hindu Undivided Family (HUF)</button>
+        </ion-item>
+        <ion-item no-lines>
+            <button ion-button (click)="doEntityType('private_limited')" ion-button round full>Private Limited</button>
+        </ion-item>
+        <ion-item no-lines>
+            <button ion-button (click)="doEntityType('sale_proprietorship')" ion-button round full>Sale Proprietorship</button>
+        </ion-item>
+        <ion-item no-lines>
+            <button ion-button (click)="doEntityType('society')" ion-button round full>Trust/Society/NGO/Non-Profit Organisationp</button>
+        </ion-item> -->
+      </div>
+    </form>
   </ion-grid>
 </ion-content>

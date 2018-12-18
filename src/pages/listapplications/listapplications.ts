@@ -4,6 +4,7 @@ import { ApplicationanswerPage } from '../applicationanswer/applicationanswer';
 import { SharedProvider } from '../../providers/shared/shared';
 import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
 import { DashboardPage } from '../dashboard/dashboard';
+import { StartoperationsPage } from '../startoperations/startoperations';
 
 /**
  * Generated class for the ListapplicationsPage page.
@@ -21,15 +22,15 @@ export class ListapplicationsPage {
 
   public applications : any;
   public token :string;
+  public response: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public menuCtrl:MenuController,public sharedProvider:SharedProvider,public loanApplicationProvider:LoanapplicationProvider) {
     this.token=localStorage.getItem('token');
-    console.log(this.token);
-    this.getAllApplication();
   }
   
   ionViewWillEnter () {
     this.menuCtrl.enable (true, "myMenu");
+    this.getAllApplication();
   }
 
   getAllApplication(){
@@ -57,6 +58,25 @@ export class ListapplicationsPage {
       this.navCtrl.setRoot(ApplicationanswerPage,{
         "questions":result
       }); 
+    }).catch(err=>{
+      this.sharedProvider.dismissLoader()
+      this.sharedProvider.presentToast("Something went wrong!")
+      console.log('Inside Error');
+      console.log(err);
+    });
+  }
+
+  addNewApplication(){
+    console.log('Add New Entity');
+    this.sharedProvider.showLoader()
+    this.loanApplicationProvider.addNewApplication(this.token,{"email":localStorage.getItem('email')}).then(result=>{
+      this.sharedProvider.dismissLoader()
+      this.response=result
+       if(this.response.message=='ok'){
+        this.navCtrl.push(StartoperationsPage)
+       }else{
+        this.sharedProvider.presentToast(this.response.message)   
+       }
     }).catch(err=>{
       this.sharedProvider.dismissLoader()
       this.sharedProvider.presentToast("Something went wrong!")

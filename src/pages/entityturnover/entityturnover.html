@@ -9,21 +9,18 @@
         <h6>Finally, could you help us with your entity's Sales Turnover & PAT?</h6>
       </ion-col>
     </ion-row>
-
+    <!-- action > 0 ? doUpdateEntityTurnover() : doEntityTurnover() -->
     <form [formGroup]="entityturnover" (ngSubmit)="doEntityTurnover()" class="animated fadeInRight">
       <ion-grid>
         <ion-row>
           <ion-col col-6>
               <ion-item>
-                  <ion-input type="text" placeholder="Enter PAN here" [formControl]="entityturnover.controls['pan']"></ion-input>
+                  <ion-input type="text" placeholder="Sales Turnover (In Cr)" [formControl]="entityturnover.controls['turnOver']"></ion-input>
                 </ion-item>
           </ion-col>
           <ion-col col-6>
               <ion-item class="pan_year">
-                  <ion-select [formControl]="entityturnover.controls['pan_year']" placeholder="Choose Year">
-                      <ion-option value="2018">2018</ion-option>
-                      <ion-option value="2017">2017</ion-option>
-                    </ion-select>
+                <ion-datetime displayFormat="YYYY" [formControl]="entityturnover.controls['pan_year']"></ion-datetime>
               </ion-item>
           </ion-col>
         </ion-row>
@@ -36,10 +33,7 @@
             
             <ion-col col-6>
                 <ion-item class="pat_year">
-                    <ion-select [formControl]="entityturnover.controls['pat_year']" placeholder="Choose Year">
-                        <ion-option value="2018">2018</ion-option>
-                        <ion-option value="2017">2017</ion-option>
-                      </ion-select>
+                    <ion-datetime displayFormat="YYYY" [formControl]="entityturnover.controls['pat_year']"></ion-datetime>
                 </ion-item>
             </ion-col>   
         </ion-row>     

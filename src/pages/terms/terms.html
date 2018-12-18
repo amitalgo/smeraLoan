@@ -10,15 +10,18 @@
         </ion-col>
       </ion-row>
 
+      <div class="animated fadeInRight">
         <ion-item no-lines>
-          <a href="javacript:void(0)">Terms & Conditions | Privacy Policy</a>
+            <ion-label><a href="javacript:void(0)">Terms & Conditions | Privacy Policy</a></ion-label>
+            <ion-checkbox (ionChange)="datachanged($event)"> </ion-checkbox>
         </ion-item>
   
         <ion-row>
             <ion-col>
-              <button class="animated fadeInRight" float-right ion-button round small (click)="doContinue()">Proceed</button>
+              <button [disabled]="!isenabled" float-right ion-button round small (click)="doContinue()">Proceed</button>
             </ion-col>
         </ion-row>
-  
+      </div>
+        
     </ion-grid>
   </ion-content>

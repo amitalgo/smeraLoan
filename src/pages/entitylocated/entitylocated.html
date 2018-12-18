@@ -8,8 +8,8 @@
         <ion-col>
           <h6>Where is your Entity located?</h6>
         </ion-col>
-      </ion-row>
-
+      </ion-row>    
+      <!-- action > 0 ? doUpdateEntityLocated() : doEntityLocated()   -->
     <form [formGroup]="entitylocated" (ngSubmit)="doEntityLocated()" class="animated fadeInRight">
       <ion-item>        
         <ion-textarea [formControl]="entitylocated.controls['address']" placeholder="Address"></ion-textarea>

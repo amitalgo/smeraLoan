@@ -9,7 +9,7 @@
         <h6>Are you yet to start your operations?<br>If not, then when was your entity incorporated?</h6>
       </ion-col>
     </ion-row>
-
+    <!-- action > 0 ? doUpdateOperations() : doOperations() -->
     <form [formGroup]="operations" (ngSubmit)="doOperations()" class="animated fadeInRight">
       <ion-grid>
           <ion-row>

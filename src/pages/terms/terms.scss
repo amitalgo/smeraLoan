@@ -2,4 +2,10 @@ page-terms {
     .header-md::after, .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{
         background-image:none !important;
     }
+
+    ion-item{
+        ion-checkbox{
+            margin: 9px 10px 8px 4px !important;
+        }
+    }
 }

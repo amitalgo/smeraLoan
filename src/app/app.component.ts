@@ -19,6 +19,8 @@ import { EntityturnoverPage } from '../pages/entityturnover/entityturnover';
 import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
 import { ChangepasswordPage } from '../pages/changepassword/changepassword';
 import { ProfilePage } from '../pages/profile/profile';
+import { ThankyouPage } from '../pages/thankyou/thankyou';
+import { TermsPage } from '../pages/terms/terms';
 
 @Component({
   templateUrl: 'app.html'
