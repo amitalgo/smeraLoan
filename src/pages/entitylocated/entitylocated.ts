@@ -46,7 +46,7 @@ export class EntitylocatedPage {
   }
 
   ionViewWillEnter () {
-    if(this.lrId!='' && this.laId!='' && this.qcId!=''){
+    if(this.lrId!=null && this.laId!=null && this.qcId!=null){
       this.sharedProvider.showLoader()
       this.loanApplicationProvider.getLoanApplicationById(this.token,{"lrId":this.lrId,"laId":this.laId,"qcId":this.qcId}).then(result=>{
         this.sharedProvider.dismissLoader()

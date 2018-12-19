@@ -30,9 +30,9 @@ export class EntityturnoverPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,public sharedProvider:SharedProvider,public loanApplicationProvider:LoanapplicationProvider,) {
     this.entityturnover = this.formBuilder.group({
-      turnOver: ['', Validators.required],
+      turnOver: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
       pan_year: ['', Validators.required],
-      pat: ['', Validators.required],
+      pat: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
       pat_year: ['', Validators.required],
     });
 
@@ -47,7 +47,7 @@ export class EntityturnoverPage {
   }
 
   ionViewWillEnter () {
-    if(this.lrId!='' && this.laId!='' && this.qcId!=''){
+    if(this.lrId!=null && this.laId!=null && this.qcId!=null){
       this.sharedProvider.showLoader()
       this.loanApplicationProvider.getLoanApplicationById(this.token,{"lrId":this.lrId,"laId":this.laId,"qcId":this.qcId}).then(result=>{
         this.sharedProvider.dismissLoader()

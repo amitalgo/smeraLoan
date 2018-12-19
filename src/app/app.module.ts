@@ -12,6 +12,7 @@ import { FileChooser } from '@ionic-native/file-chooser';
 import { IOSFilePicker } from '@ionic-native/file-picker';
 import { DocumentPicker } from '@ionic-native/document-picker';
 import { HttpModule } from '@angular/http';
+import { SelectSearchableModule } from 'ionic-select-searchable';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -95,6 +96,7 @@ import { ProfilePage } from '../pages/profile/profile';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    SelectSearchableModule,
     HttpClientModule,
     HttpModule
   ],

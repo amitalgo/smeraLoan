@@ -21,6 +21,8 @@ import { ChangepasswordPage } from '../pages/changepassword/changepassword';
 import { ProfilePage } from '../pages/profile/profile';
 import { ThankyouPage } from '../pages/thankyou/thankyou';
 import { TermsPage } from '../pages/terms/terms';
+import { EntityactivityPage } from '../pages/entityactivity/entityactivity';
+import { PreferedbankPage } from '../pages/preferedbank/preferedbank';
 
 @Component({
   templateUrl: 'app.html'
@@ -60,7 +62,7 @@ export class MyApp {
       this.splashScreen.hide();
       this.isLoggedIn = this.sharedProvider.isLoggedIn();
       if(this.isLoggedIn=='otp'){
-        this.nav.setRoot(PasswordPage)
+        this.nav.setRoot(PasswordPage);
       }else if(this.isLoggedIn){
         this.nav.setRoot(DashboardPage);
       }else{
@@ -80,7 +82,6 @@ export class MyApp {
       this.sharedProvider.dismissLoader()
       this.sharedProvider.presentToast("Something went wrong!")
     })
-
   }
 
   openPage(page) {

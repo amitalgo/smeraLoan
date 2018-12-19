@@ -12,15 +12,22 @@
 
       <ion-row>
         <ion-col col-5>
-            <button class="animated fadeInRight" ion-button float-left ion-button round small (click)="doProceed('sbi')">SBI</button>
+            <button class="animated fadeInRight" ion-button float-left ion-button round small #sbi (click)="doProceed('sbi')">SBI</button>
         </ion-col>
         <ion-col col-2>
             OR
         </ion-col>
         <ion-col col-5>
-            <button class="animated fadeInRight" ion-button float-right ion-button round small>Any Other Bank</button>
+          <ion-item>
+            <ion-input class="animated fadeInRight" type="text" placeholder="Other Bank" [(ngModel)]="otherBank"></ion-input>
+          </ion-item>
         </ion-col>             
-      </ion-row>   
+      </ion-row> 
+      <ion-row>
+        <ion-col>
+          <button class="animated fadeInRight" float-right ion-button round small>Done</button>
+        </ion-col>
+      </ion-row>
   
     </ion-grid>
   </ion-content>

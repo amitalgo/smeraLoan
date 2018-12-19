@@ -9,8 +9,8 @@
         <h6>Finally, could you help us with your entity's Sales Turnover & PAT?</h6>
       </ion-col>
     </ion-row>
-    <!-- action > 0 ? doUpdateEntityTurnover() : doEntityTurnover() -->
-    <form [formGroup]="entityturnover" (ngSubmit)="doEntityTurnover()" class="animated fadeInRight">
+    
+    <form [formGroup]="entityturnover" (ngSubmit)="action > 0 ? doUpdateEntityTurnover() : doEntityTurnover()" class="animated fadeInRight">
       <ion-grid>
         <ion-row>
           <ion-col col-6>
@@ -20,7 +20,7 @@
           </ion-col>
           <ion-col col-6>
               <ion-item class="pan_year">
-                <ion-datetime displayFormat="YYYY" [formControl]="entityturnover.controls['pan_year']"></ion-datetime>
+                <ion-datetime displayFormat="YYYY" placeholder="Select Year" [formControl]="entityturnover.controls['pan_year']"></ion-datetime>
               </ion-item>
           </ion-col>
         </ion-row>
@@ -33,7 +33,7 @@
             
             <ion-col col-6>
                 <ion-item class="pat_year">
-                    <ion-datetime displayFormat="YYYY" [formControl]="entityturnover.controls['pat_year']"></ion-datetime>
+                    <ion-datetime displayFormat="YYYY" placeholder="Select Year" [formControl]="entityturnover.controls['pat_year']"></ion-datetime>
                 </ion-item>
             </ion-col>   
         </ion-row>     

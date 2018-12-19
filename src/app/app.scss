@@ -39,12 +39,13 @@
 
 
 // For Dropdown Select Box
-ion-select{
+ion-select,.select-searchable{
     max-width: 100% !important;
 }
-.select-md .select-icon {
+.select-md .select-icon,.select-searchable-icon {
     position: absolute;
     right: 30px;
+    width:12px;
 }
 
 ion-select{
@@ -56,6 +57,26 @@ ion-select{
     }    
 } 
 
+select-searchable{
+    button{
+        .button-inner{
+            border: 1px solid color($colors,primary);
+            border-radius: 34px;
+        }   
+    }
+    .select-searchable-value{
+        padding-left :0 !important;
+    }    
+}
+
+ion-item{
+    ion-label{
+        max-width: fit-content !important;
+    }
+    .item-inner{ 
+        box-shadow:none !important;
+    }
+}
 
 // For Header 
 .tabs-md[tabsPlacement="top"] > .tabbar::after, .footer-md::before, .tabs-md[tabsPlacement="bottom"] > .tabbar::before{

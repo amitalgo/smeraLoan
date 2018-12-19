@@ -43,8 +43,13 @@ export class StartoperationsPage {
     console.log('ionViewDidLoad StartoperationsPage');
   }
 
+  yetToStart(val){
+    localStorage.setItem('operationYear',val);
+    this.navCtrl.push(EntitytypePage);
+  }
+
   ionViewWillEnter () {
-    if(this.lrId!='' && this.laId!='' && this.qcId!=''){
+    if(this.lrId!=null && this.laId!=null && this.qcId!=null){
       this.sharedProvider.showLoader()
       this.loanApplicationProvider.getLoanApplicationById(this.token,{"lrId":this.lrId,"laId":this.laId,"qcId":this.qcId}).then(result=>{
         this.sharedProvider.dismissLoader()
@@ -67,23 +72,23 @@ export class StartoperationsPage {
     this.navCtrl.push(EntitytypePage);
   }
 
-  doUpdateOperations(){
+  doUpdateOperations(val){
     console.log("Update Year of operations Function");
-    this.sharedProvider.showLoader();
+    // this.sharedProvider.showLoader();
     this.operations.value['lrId']=this.lrId;
     this.operations.value['laId']=this.laId;
     this.operations.value['qcId']=this.qcId;
-    this.operations.value['yearOfEst']=this.operations.value.year;
+    this.operations.value['yearOfEst']=(val!='no')?val:this.operations.value.year;
     
     this.entityProvider.updateEntity(this.token,this.operations.value).then(result => {
-      this.sharedProvider.dismissLoader();
+      // this.sharedProvider.dismissLoader();
       this.data = result
       localStorage.setItem('operationYear',this.operations.value.year);
       this.sharedProvider.presentToast(this.data.message)
       this.navCtrl.popToRoot({ animate: true, direction: 'back',duration: 500  }) 
     }).catch(err => {
       console.log(err)
-      this.sharedProvider.dismissLoader();
+      // this.sharedProvider.dismissLoader();
       this.sharedProvider.presentToast("Something went wrong")
     });
   }

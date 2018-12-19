@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component,ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { SelectSearchableComponent } from 'ionic-select-searchable';
 
 import { PandetailsPage } from '../pandetails/pandetails';
 import { EntityProvider } from '../../providers/entity/entity';
@@ -20,6 +21,10 @@ import { LoanapplicationProvider } from '../../providers/loanapplication/loanapp
 })
 export class EntityactivityPage {
 
+  @ViewChild('myselect') selectComponent:SelectSearchableComponent;
+  indus = null;
+  userIds = [];
+
   entityactivity: FormGroup;
   token : any;
   industries : any;
@@ -29,7 +34,7 @@ export class EntityactivityPage {
   lrId : any;
   action : any = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,public entityProvider:EntityProvider,public sharedProvider:SharedProvider,public loanApplicationProvider:LoanapplicationProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,public entityProvider:EntityProvider,public sharedProvider:SharedProvider,public loanApplicationProvider:LoanapplicationProvider,private toastCtrl : ToastController) {
     this.entityactivity = this.formBuilder.group({
       activity: ['', Validators.required],
       industry: ['', Validators.required],
@@ -47,7 +52,7 @@ export class EntityactivityPage {
   }
 
   ionViewWillEnter () {
-    if(this.lrId!='' && this.laId!='' && this.qcId!=''){
+    if(this.lrId!=null && this.laId!=null && this.qcId!=null){
       console.log('Entered View');
       this.sharedProvider.showLoader()
       this.loanApplicationProvider.getLoanApplicationById(this.token,{"lrId":this.lrId,"laId":this.laId,"qcId":this.qcId}).then(result=>{
@@ -77,8 +82,9 @@ export class EntityactivityPage {
   }
 
   doEntityActivity(){
+    console.log(this.entityactivity.value)
     localStorage.setItem('activity',this.entityactivity.value.activity);
-    localStorage.setItem('industry',this.entityactivity.value.industry);
+    localStorage.setItem('industry',this.entityactivity.value.industry.subindustry_name);
     this.navCtrl.push(PandetailsPage);
   }
 
@@ -88,12 +94,12 @@ export class EntityactivityPage {
     this.entityactivity.value['lrId']=this.lrId;
     this.entityactivity.value['laId']=this.laId;
     this.entityactivity.value['qcId']=this.qcId;
-
-    this.entityProvider.updateEntity(this.token,this.entityactivity.value).then(result => {
+    var params={"activity":this.entityactivity.value.activity,"industry":this.entityactivity.value.industry.subindustry_name}
+    this.entityProvider.updateEntity(this.token,params).then(result => {
       this.sharedProvider.dismissLoader();
       this.response = result
       localStorage.setItem('activity',this.entityactivity.value.activity);
-    localStorage.setItem('industry',this.entityactivity.value.industry);
+    localStorage.setItem('industry',this.entityactivity.value.industry.subindustry_name);
       this.sharedProvider.presentToast(this.response.message)
       this.navCtrl.popToRoot({ animate: true, direction: 'back',duration: 500  }) 
     }).catch(err => {
@@ -101,6 +107,23 @@ export class EntityactivityPage {
       this.sharedProvider.dismissLoader();
       this.sharedProvider.presentToast("Something went wrong")
     });
+  }
+
+  // Searchable Select Box 
+  userChanged(event: { component :SelectSearchableComponent,value:any}){
+    console.log('event',event);
+  }
+
+  onClose(){
+    let toast = this.toastCtrl.create({
+      message : 'Thanks For selection',
+      duration : 2000 
+    });
+    toast.present();
+  }
+
+  openFromCode(){
+    this.selectComponent.open();
   }
 
 }

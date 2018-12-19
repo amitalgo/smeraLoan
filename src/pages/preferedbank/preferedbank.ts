@@ -22,8 +22,10 @@ export class PreferedbankPage {
   public data = {};
   token : any;
   response : any;
+  otherBank : any='';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private sharedProvider:SharedProvider,private loanApplication:LoanapplicationProvider) {
+    console.log(this.otherBank)
   }
 
   ionViewDidLoad() {
@@ -38,7 +40,7 @@ export class PreferedbankPage {
     this.data['wrkcapitalAmt']=localStorage.getItem('wrkcapitalAmt');
     this.data['otherFacType']=localStorage.getItem('otherFacType');
     this.data['otherFacAmt']=localStorage.getItem('otherFacAmt')
-    this.data['preferedBank']=preferedBank
+    this.data['preferedBank']=(this.otherBank==null)?preferedBank:this.otherBank
     this.token=localStorage.getItem('token');
 
     this.loanApplication.updateLoanApplication(this.token,this.data).then(result => {

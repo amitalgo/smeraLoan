@@ -10,8 +10,8 @@
         <h6>Select the activities your entity is into and the Industry it operates in.</h6>
       </ion-col>
     </ion-row>
-    <!-- action > 0 ? doUpdateEntityActivity() : doEntityActivity() -->
-    <form [formGroup]="entityactivity" (ngSubmit)="doEntityActivity()" class="animated fadeInRight">
+    
+    <form [formGroup]="entityactivity" (ngSubmit)="action > 0 ? doUpdateEntityActivity() : doEntityActivity()" class="animated fadeInRight">
       
         <ion-item class="activity" no-lines>
         <ion-select [formControl]="entityactivity.controls['activity']" placeholder="Select Activity">
@@ -22,9 +22,19 @@
 
         
         <ion-item class="industry" no-lines>
-        <ion-select [formControl]="entityactivity.controls['industry']" placeholder="Select Industry">
-            <ion-option value="{{ industry.subindustry_name }}" *ngFor="let industry of industries">{{ industry.subindustry_name }}</ion-option>
-          </ion-select>
+          <!-- <ion-select [formControl]="entityactivity.controls['industry']" placeholder="Select Industry">
+              <ion-option value="{{ industry.subindustry_name }}" *ngFor="let industry of industries">{{ industry.subindustry_name }}</ion-option>
+          </ion-select> -->
+          <select-searchable [formControl]="entityactivity.controls['industry']" placeholder="Select Industry"
+          item-content
+          [(ngModel)]="indus"
+          [items]="industries"
+          itemValueField="subindustry_name"
+          itemTextField="subindustry_name"
+          [canSearch]="true"
+          (onChange)="userChanged($event)"
+          >
+          </select-searchable>
         </ion-item>
 
         

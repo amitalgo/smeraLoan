@@ -9,8 +9,8 @@
             <div><h6 class="centre">Choose your Entity Type</h6></div>
           </ion-col>
         </ion-row>
-        <!-- action > 0 ? doUpdateEntityType() : doEntityType() -->
-    <form [formGroup]="entityType" (ngSubmit)="doEntityType()" class="animated fadeInRight">
+        
+    <form [formGroup]="entityType" (ngSubmit)="action > 0 ? doUpdateEntityType() : doEntityType()" class="animated fadeInRight">
       <div class="animated fadeInRight">
           <ion-grid>              
               <ion-row>

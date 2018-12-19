@@ -9,8 +9,7 @@
           <h6>Where is your Entity located?</h6>
         </ion-col>
       </ion-row>    
-      <!-- action > 0 ? doUpdateEntityLocated() : doEntityLocated()   -->
-    <form [formGroup]="entitylocated" (ngSubmit)="doEntityLocated()" class="animated fadeInRight">
+    <form [formGroup]="entitylocated" (ngSubmit)="action > 0 ? doUpdateEntityLocated() : doEntityLocated()  " class="animated fadeInRight">
       <ion-item>        
         <ion-textarea [formControl]="entitylocated.controls['address']" placeholder="Address"></ion-textarea>
       </ion-item>
@@ -20,9 +19,7 @@
       <ion-item>
         <ion-input type="text" placeholder="Pincode" [formControl]="entitylocated.controls['pincode']"></ion-input>
       </ion-item>
-      <ion-item no-lines>
-          <button ion-button [disabled]="!entitylocated.valid" type="submit" float-right ion-button round small>DONE</button>
-      </ion-item>
+        <button ion-button [disabled]="!entitylocated.valid" type="submit" float-right ion-button round small>DONE</button>
     </form>
   </ion-grid>
 </ion-content>

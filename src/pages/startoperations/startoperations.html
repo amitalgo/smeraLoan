@@ -9,18 +9,14 @@
         <h6>Are you yet to start your operations?<br>If not, then when was your entity incorporated?</h6>
       </ion-col>
     </ion-row>
-    <!-- action > 0 ? doUpdateOperations() : doOperations() -->
-    <form [formGroup]="operations" (ngSubmit)="doOperations()" class="animated fadeInRight">
-      <ion-grid>
-          <ion-row>
-            <ion-col>
-                <ion-item no-lines>
-                    <!-- <button ion-button float-right ion-button round small>Yet to start my operations</button> -->
-                    <label for="Yet to start my operations" float-right>Yet to start my operations</label>
-                  </ion-item>
-            </ion-col>
-          </ion-row>
-          
+    <ion-row>
+        <ion-col>
+                <button ion-button float-right ion-button round small (click)="action > 0 ? doUpdateOperations('yet_to_start') : yetToStart('yet_to_start')">Yet to start my operations</button>
+                <!-- <label for="Yet to start my operations" float-right>Yet to start my operations</label> -->
+        </ion-col>
+      </ion-row>
+    <form [formGroup]="operations" (ngSubmit)="action > 0 ? doUpdateOperations('no') : doOperations()" class="animated fadeInRight">
+      <ion-grid>          
           <ion-row>
             <ion-col>
                 <ion-item no-lines>
