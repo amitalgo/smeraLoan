@@ -54,6 +54,7 @@ import { ChangepasswordPage } from '../pages/changepassword/changepassword';
 import { PasswordValidationProvider } from '../providers/password-validation/password-validation';
 import { ForgotpasswordPage } from '../pages/forgotpassword/forgotpassword';
 import { ProfilePage } from '../pages/profile/profile';
+import { Push } from '@ionic-native/push';
 
 
 @NgModule({
@@ -145,6 +146,7 @@ import { ProfilePage } from '../pages/profile/profile';
     FileChooser,
     IOSFilePicker,
     DocumentPicker,
+    Push,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
     SharedProvider,
