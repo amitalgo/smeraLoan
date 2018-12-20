@@ -19,7 +19,7 @@ import { ProfilePage } from '../pages/profile/profile';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =  HomePage
+  rootPage: any =  PasswordPage
 
   pages: Array<{title: string, component: any}>;
   isLoggedIn: any;
@@ -55,10 +55,10 @@ export class MyApp {
       }else if(this.isLoggedIn){
         this.nav.setRoot(DashboardPage);
       }else{
-        this.nav.setRoot(HomePage);
+        this.nav.setRoot(PasswordPage);
       }
 
-      this.pushSetup();
+      // this.pushSetup();
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { EntityactivityPage } from '../entityactivity/entityactivity';
@@ -14,7 +14,6 @@ import { EntityProvider } from '../../providers/entity/entity';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-entitylocated',
   templateUrl: 'entitylocated.html',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Events } from 'ionic-angular';
+import { NavController, NavParams,Events } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { PasswordPage } from '../password/password';
@@ -12,7 +12,6 @@ import { SharedProvider } from '../../providers/shared/shared';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-verifyregister',
   templateUrl: 'verifyregister.html',

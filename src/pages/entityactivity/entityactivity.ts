@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { SelectSearchableComponent } from 'ionic-select-searchable';
 
@@ -14,7 +14,6 @@ import { LoanapplicationProvider } from '../../providers/loanapplication/loanapp
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-entityactivity',
   templateUrl: 'entityactivity.html',

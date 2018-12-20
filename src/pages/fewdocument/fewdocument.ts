@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { SubmitdocumentPage } from '../submitdocument/submitdocument';
 import { TermsPage } from '../terms/terms';
 
@@ -10,7 +10,6 @@ import { TermsPage } from '../terms/terms';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-fewdocument',
   templateUrl: 'fewdocument.html',

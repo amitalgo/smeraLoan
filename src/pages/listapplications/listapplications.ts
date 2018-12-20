@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
+import { NavController, NavParams,MenuController } from 'ionic-angular';
 import { ApplicationanswerPage } from '../applicationanswer/applicationanswer';
 import { SharedProvider } from '../../providers/shared/shared';
 import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
@@ -13,7 +13,6 @@ import { StartoperationsPage } from '../startoperations/startoperations';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-listapplications',
   templateUrl: 'listapplications.html',

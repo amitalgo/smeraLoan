@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { NameDesignationPage } from '../name-designation/name-designation';
@@ -11,7 +11,6 @@ import { NameDesignationPage } from '../name-designation/name-designation';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-password',
   templateUrl: 'password.html',
@@ -19,6 +18,8 @@ import { NameDesignationPage } from '../name-designation/name-designation';
 export class PasswordPage {
 
   private submit: FormGroup;
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off'; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,) {
     this.submit = this.formBuilder.group({
@@ -29,6 +30,11 @@ export class PasswordPage {
   doSubmit(){
     localStorage.setItem('password',this.submit.value.password);
     this.navCtrl.push(NameDesignationPage);
+  }
+
+  hideShowPassword() {
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 
   ionViewDidLoad() {

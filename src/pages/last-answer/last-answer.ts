@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { StartoperationsPage } from '../startoperations/startoperations';
 
 /**
@@ -9,7 +9,6 @@ import { StartoperationsPage } from '../startoperations/startoperations';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-last-answer',
   templateUrl: 'last-answer.html',

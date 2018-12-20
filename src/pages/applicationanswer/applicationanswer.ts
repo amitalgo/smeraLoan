@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
+import { NavController, NavParams,MenuController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map'
 import { ListapplicationsPage } from '../listapplications/listapplications';
@@ -18,7 +18,6 @@ import { PreferedbankPage } from '../preferedbank/preferedbank';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-applicationanswer',
   templateUrl: 'applicationanswer.html',

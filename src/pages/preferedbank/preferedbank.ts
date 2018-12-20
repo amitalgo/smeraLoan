@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { SharedProvider } from '../../providers/shared/shared';
 import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
 import { FewdocumentPage } from '../fewdocument/fewdocument';
@@ -12,7 +12,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-preferedbank',
   templateUrl: 'preferedbank.html',

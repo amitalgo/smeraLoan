@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
+import {  NavController, NavParams,MenuController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { PasswordValidationProvider } from '../../providers/password-validation/password-validation';
 import { SharedProvider } from '../../providers/shared/shared';
@@ -12,7 +12,6 @@ import { UserProvider } from '../../providers/user/user';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-changepassword',
   templateUrl: 'changepassword.html',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,Platform, ViewController } from 'ionic-angular';
+import { NavController, NavParams,Platform, ViewController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { TermsPage } from '../terms/terms';
 import { IOSFilePicker } from '@ionic-native/file-picker';
@@ -16,7 +16,6 @@ import { SubmitdocumentProvider } from '../../providers/submitdocument/submitdoc
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-submitdocument',
   templateUrl: 'submitdocument.html',

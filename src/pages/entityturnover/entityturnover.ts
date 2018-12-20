@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { LoanrequirementPage } from '../loanrequirement/loanrequirement';
 import { SharedProvider } from '../../providers/shared/shared';
 import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
-import { EntityProvider } from '../../providers/entity/entity';
 
 /**
  * Generated class for the EntityturnoverPage page.
@@ -13,7 +12,6 @@ import { EntityProvider } from '../../providers/entity/entity';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-entityturnover',
   templateUrl: 'entityturnover.html',

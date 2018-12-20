@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
+import { NavController, NavParams,MenuController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { CompanynamePage } from '../companyname/companyname';
 /**
@@ -9,7 +9,6 @@ import { CompanynamePage } from '../companyname/companyname';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-name-designation',
   templateUrl: 'name-designation.html',

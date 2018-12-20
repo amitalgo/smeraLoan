@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ThankyouPage } from '../thankyou/thankyou';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
@@ -10,7 +10,6 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-terms',
   templateUrl: 'terms.html',

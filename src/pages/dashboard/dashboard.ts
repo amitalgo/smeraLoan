@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
+import {  NavController, NavParams,MenuController } from 'ionic-angular';
 import { ListapplicationsPage } from '../listapplications/listapplications';
 
 /**
@@ -9,7 +9,6 @@ import { ListapplicationsPage } from '../listapplications/listapplications';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-dashboard',
   templateUrl: 'dashboard.html',
