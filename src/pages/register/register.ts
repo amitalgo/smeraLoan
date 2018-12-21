@@ -41,9 +41,13 @@ export class RegisterPage {
     this.userProvider.register(this.register.value).then(result => {
       this.sharedProvider.dismissLoader()
       this.response = result
-      localStorage.setItem('email',this.register.value.email)
-      localStorage.setItem('mobile',this.register.value.mobile)
-      this.navCtrl.push(VerifyregisterPage);
+      if (this.response.message == "ok") {
+        localStorage.setItem('email',this.register.value.email)
+        localStorage.setItem('mobile',this.register.value.mobile)
+        this.navCtrl.push(VerifyregisterPage);
+      } else {
+        this.sharedProvider.presentToast(this.response.message);
+      }
     }).catch(err => {
       console.log(err)
       this.sharedProvider.dismissLoader()

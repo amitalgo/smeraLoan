@@ -24,6 +24,7 @@ export class LoginPage {
   loginResponse: any;
   token:any;
   memberResponse:any;
+  tokenData:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,private sharedProvider:SharedProvider,private userProvider: UserProvider,private event: Events) {
     this.login = this.formBuilder.group({
@@ -39,6 +40,7 @@ export class LoginPage {
       this.loginResponse = result
       if(this.loginResponse){
         localStorage.setItem('token', this.loginResponse.token)
+        this.updateDeviceToken(this.loginResponse.token)
         this.fetchMemberProfile(this.loginResponse.token)
       }else{
         this.sharedProvider.presentToast('Invalid UserName or Password');
@@ -67,6 +69,18 @@ export class LoginPage {
     }).catch(err=>{
       this.sharedProvider.dismissLoader()
       console.log(err)
+    })
+  }
+
+  updateDeviceToken(token){
+    this.tokenData = {
+      'deviceId': localStorage.getItem('tokenId')
+    }
+
+    this.userProvider.updateDevice(token, this.tokenData).then(result=>{
+      console.log(result)
+    }).catch(err=>{
+      console.log(err) 
     })
   }
 

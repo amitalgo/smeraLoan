@@ -6,7 +6,7 @@
         </ion-col>
       </ion-row>
   
-      <form [formGroup]="existingloan" (ngSubmit)="doExistingLoan()">
+      <form [formGroup]="existingloan" (ngSubmit)="doExistingLoan()" class="animated fadeInRight">
         <ion-item>
           <ion-input type="text" placeholder="Loan Facility" [formControl]="existingloan.controls['loan_facility']"></ion-input>
         </ion-item>
@@ -19,15 +19,13 @@
         <ion-item>
             <ion-input type="text" placeholder="Bank Name" [formControl]="existingloan.controls['bank_name']"></ion-input>
         </ion-item>
-        <ion-item>
-            <button class="animated fadeInRight" ion-button ion-button round small (click)="noLoan()">No, i do not have any existing loan</button>
+        <ion-item no-lines>
+            <button ion-button ion-button round small (click)="noLoan()">No, i do not have any existing loan</button>
         </ion-item>
-        <ion-item>
-            <button class="animated fadeInRight" ion-button ion-button round small [disabled]="!existingloan.valid" type="submit">Click here to add another loan facility</button>
+        <ion-item no-lines>
+            <button ion-button ion-button round small [disabled]="!existingloan.valid" (click)="doAddMore()" type="button">Click here to add another loan facility</button>
         </ion-item>        
-  
-        <button class="animated fadeInRight" ion-button [disabled]="!existingloan.valid" type="submit" float-right ion-button round outline small>DONE</button>
-  
+        <button ion-button [disabled]="!existingloan.valid" type="submit" float-right ion-button round small>DONE</button>  
       </form>
     </ion-grid>
   </ion-content>

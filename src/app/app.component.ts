@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, Events } from 'ionic-angular';
+import { Nav, Platform, Events,AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -19,14 +19,15 @@ import { ProfilePage } from '../pages/profile/profile';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =  PasswordPage
+  rootPage: any =  HomePage
 
   pages: Array<{title: string, component: any}>;
   isLoggedIn: any;
   token:any;
   users:any;
+  tokenId:any;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public sharedService:SharedProvider,public sharedProvider: SharedProvider,public splashScreen: SplashScreen,private userProvider:UserProvider,public events: Events,private push: Push) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public sharedService:SharedProvider,public sharedProvider: SharedProvider,public splashScreen: SplashScreen,private userProvider:UserProvider,public events: Events,private push: Push,private alertCtrl: AlertController) {
     this.initializeApp();
 
     events.subscribe('user:updated',()=>{
@@ -37,7 +38,7 @@ export class MyApp {
     this.pages = [
       { title: 'Profile', component: ProfilePage },
       { title: 'Application Status', component: DashboardPage },
-      { title: 'Notifications', component: ListPage },
+      // { title: 'Notifications', component: ListPage },
       { title: 'Change Password', component: ChangepasswordPage }
     ];
 
@@ -55,39 +56,14 @@ export class MyApp {
       }else if(this.isLoggedIn){
         this.nav.setRoot(DashboardPage);
       }else{
-        this.nav.setRoot(PasswordPage);
+        this.nav.setRoot(HomePage);
       }
 
-      // this.pushSetup();
+      this.pushSetup();
     });
   }
 
   pushSetup(){
-    // to check if we have permission
-      this.push.hasPermission()
-      .then((res: any) => {
-
-        if (res.isEnabled) {
-          console.log('We have permission to send push notifications');
-        } else {
-          console.log('We do not have permission to send push notifications');
-        }
-
-      });
-
-      // Create a channel (Android O and above). You'll need to provide the id, description and importance properties.
-      this.push.createChannel({
-      id: "testchannel1",
-      description: "My first test channel",
-      // The importance property goes from 1 = Lowest, 2 = Low, 3 = Normal, 4 = High and 5 = Highest.
-      importance: 3
-      }).then(() => console.log('Channel created'));
-
-      // Delete a channel (Android O and above)
-      this.push.deleteChannel('testchannel1').then(() => console.log('Channel deleted'));
-
-      // Return a list of currently configured channels
-      this.push.listChannels().then((channels) => console.log('List of channels', channels))
 
       // to initialize push notifications
 
@@ -101,26 +77,57 @@ export class MyApp {
           sound: 'false'
       },
       windows: {},
-      browser: {
-          pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-      }
+      browser: {}
       };
 
       const pushObject: PushObject = this.push.init(options);
 
-
-      pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
-
-      pushObject.on('registration').subscribe((registration: any) => console.log('Device registered', registration));
-
-      pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
+      pushObject.on('notification').subscribe((notification: any) => {
+        console.log('message -> ' + notification.message);
+        //if user using app and push notification comes
+        if (notification.additionalData.foreground) {
+          // if application open, show popup
+          // this.badge.increase(1)
+    
+          let confirmAlert = this.alertCtrl.create({
+            title: notification.title,
+            message: notification.message,
+            buttons: [{
+              text: 'Ignore',
+              role: 'cancel'
+            }, {
+              text: 'View',
+              handler: () => {
+                //TODO: Your logic here
+                this.nav.push(DashboardPage);
+              }
+            }]
+          });
+          confirmAlert.present();
+        } else {
+          //if user NOT using app and push notification comes
+          //TODO: Your logic on click of push notification directly
+          this.nav.push(DashboardPage);
+          console.log('Push notification clicked');
+        }
+       });
+       
+       pushObject.on('registration').subscribe((registration: any) => {
+         let fcmresp = registration
+         localStorage.setItem('tokenId',fcmresp.registrationId);
+         console.log('LocalStorage is ' + localStorage.getItem('tokenId'));
+       });
+       
+       pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error)); 
   }
 
   doLogout(){
     this.sharedProvider.showLoader()
+    this.tokenId = localStorage.getItem('tokenId')
     this.token = localStorage.getItem('token')
     this.userProvider.logout(this.token).then(result=>{
       this.sharedProvider.clearLocalStorage()
+      localStorage.setItem('tokenId', this.tokenId)
       this.sharedProvider.dismissLoader()
       this.nav.setRoot(HomePage)
     }).catch(err=>{

@@ -11,6 +11,7 @@ import { PandetailsPage } from '../pandetails/pandetails';
 import { EntityturnoverPage } from '../entityturnover/entityturnover';
 import { LoantermPage } from '../loanterm/loanterm';
 import { PreferedbankPage } from '../preferedbank/preferedbank';
+import { LoanexistingPage } from '../loanexisting/loanexisting';
 /**
  * Generated class for the ApplicationanswerPage page.
  *
@@ -32,7 +33,8 @@ export class ApplicationanswerPage {
     'PandetailsPage' : PandetailsPage,
     'EntityturnoverPage' : EntityturnoverPage,
     'LoantermPage' : LoantermPage,
-    'PreferedbankPage' : PreferedbankPage
+    'PreferedbankPage' : PreferedbankPage,
+    'LoanexistingPage' : LoanexistingPage
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http,private menuCtrl:MenuController) {

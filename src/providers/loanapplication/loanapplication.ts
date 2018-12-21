@@ -76,4 +76,16 @@ export class LoanapplicationProvider {
     })    
   }
 
+  updateExistingApplication(token, data){
+    return new Promise((resolve, reject)=>{
+      this.http.post(this.apiUrl+'controller=loanApplication&action=updateexistingloan',JSON.stringify(data),{
+        headers: new HttpHeaders().set('Token',token).set('Accept','application/json').set('Content-Type','application/json')
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    })    
+  }
+
 }

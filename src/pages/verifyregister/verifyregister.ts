@@ -21,6 +21,7 @@ export class VerifyregisterPage {
   private verify: FormGroup;
   response: any;
   token:any;
+  tokenData:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,private userProvider:UserProvider,private sharedProvider:SharedProvider,private event:Events) {
     this.verify = this.formBuilder.group({
@@ -38,6 +39,7 @@ export class VerifyregisterPage {
       if (typeof this.response.message === "undefined") {
         localStorage.setItem('token', this.response.token)
         localStorage.setItem('otp','true')
+        this.updateDeviceToken(this.response.token)
         this.fetchMemberProfile(this.response.token)
       } else {
         this.sharedProvider.presentToast(this.response.message);
@@ -47,6 +49,18 @@ export class VerifyregisterPage {
       this.sharedProvider.dismissLoader();
       this.sharedProvider.presentToast("Something Went Wrong");
     });
+  }
+
+  updateDeviceToken(token){
+    this.tokenData = {
+      'deviceId': localStorage.getItem('tokenId')
+    }
+
+    this.userProvider.updateDevice(token, this.tokenData).then(result=>{
+      console.log(result)
+    }).catch(err=>{
+      console.log(err) 
+    })
   }
 
   fetchMemberProfile(token){

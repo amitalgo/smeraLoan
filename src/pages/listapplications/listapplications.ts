@@ -50,6 +50,9 @@ export class ListapplicationsPage {
   }
 
   previewAnswer(lr_id,la_id,qc_id){
+    // console.log("Qc is" + qc_id);
+    // console.log('Lr Id is :' +lr_id);
+    // console.log('La Id is:' +la_id);
 
     this.sharedProvider.showLoader()
     this.loanApplicationProvider.getQuestionariesAnswer(this.token,{"lrId":lr_id,"laId":la_id,"qcId":qc_id}).then(result=>{

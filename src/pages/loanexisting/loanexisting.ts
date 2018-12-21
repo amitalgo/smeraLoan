@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { FewdocumentPage } from '../fewdocument/fewdocument';
+import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
+import { SharedProvider } from '../../providers/shared/shared';
 
 /**
  * Generated class for the LoanexistingPage page.
@@ -17,14 +19,19 @@ import { FewdocumentPage } from '../fewdocument/fewdocument';
 export class LoanexistingPage {
 
   existingloan: FormGroup;
+  existingLoanData : any = [];
+  token : any;
+  response : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,private loanApplicationProvider:LoanapplicationProvider,public sharedProvider:SharedProvider) {
     this.existingloan = this.formBuilder.group({
       loan_facility: ['', Validators.required],
-      loan_amount: ['', Validators.required],
+      loan_amount: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
       interest: ['', Validators.required],
       bank_name: ['', Validators.required],
     });
+
+    this.token=localStorage.getItem('token');
   }
 
   ionViewDidLoad() {
@@ -33,12 +40,33 @@ export class LoanexistingPage {
 
   doExistingLoan(){
     console.log("Loan Exisitng");
-    this.navCtrl.setRoot(FewdocumentPage);
+    this.sharedProvider.showLoader();
+    this.existingLoanData.push(this.existingloan.value)
+    console.log(this.existingLoanData);
+    this.loanApplicationProvider.updateExistingApplication(this.token,this.existingLoanData).then(result => {
+      this.sharedProvider.dismissLoader();
+      this.response = result
+      if (this.response.message == "ok") {
+        this.navCtrl.push(FewdocumentPage);
+      } else {
+        this.sharedProvider.presentToast(this.response.message);
+      }
+    }).catch(err => {
+        console.log(err)
+        this.sharedProvider.dismissLoader();
+        this.sharedProvider.presentToast("Something went wrong")
+    });
+    
+  }
+
+  doAddMore(){
+    this.existingLoanData.push(this.existingloan.value)
+    this.existingloan.reset()
   }
 
   noLoan(){
     console.log("No Existing Loan");
-    this.navCtrl.setRoot(FewdocumentPage);
+    // this.navCtrl.setRoot(FewdocumentPage);
   }
 
 }
