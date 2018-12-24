@@ -9,7 +9,7 @@
 
 
     <form [formGroup]="verify" (ngSubmit)="doVerify()" class="animated fadeInRight">
-      <ion-item>
+      <ion-item no-lines>
         <ion-input type="text" placeholder="E.g 56452" [formControl]="verify.controls['verification_code']"></ion-input>
       </ion-item>
       <!-- <ion-item *ngIf="register.controls['email'].errors?.required && register.controls['email'].touched">

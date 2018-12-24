@@ -21,19 +21,28 @@
       <ion-grid class="content">      
       
           <form [formGroup]="profileForm" (ngSubmit)="doUpdateProfile()" class="animated fadeInRight">
-            <ion-item>
+            <ion-item no-lines>
               <ion-input type="text" placeholder="Enter Full Name" [formControl]="profileForm.controls['name']"></ion-input>
             </ion-item>
-            <ion-item>
+            <span *ngIf="profileForm.controls.name.errors && profileForm.controls.name.dirty && profileForm.controls.name.hasError('required')" class="danger" padding>Name is required.</span> 
+            <span *ngIf="profileForm.controls.name.errors && profileForm.controls.name.dirty && profileForm.controls.name.hasError('pattern')" class="danger" padding>Not a valid name.</span>
+            <ion-item no-lines>
               <ion-input type="text" placeholder="Enter Designation" [formControl]="profileForm.controls['designation']"></ion-input>
             </ion-item>
-            <ion-item>
+            <span *ngIf="profileForm.controls.designation.errors && profileForm.controls.designation.dirty && profileForm.controls.designation.hasError('required')" class="danger" padding>Designation is required.</span> 
+            <span *ngIf="profileForm.controls.designation.errors && profileForm.controls.designation.dirty && profileForm.controls.designation.hasError('pattern')" class="danger" padding>Not a valid designation.</span>
+            <ion-item no-lines>
                 <ion-input type="text" placeholder="Enter Company Name" [formControl]="profileForm.controls['company_name']"></ion-input>
             </ion-item>
-            <ion-item>
+            <span *ngIf="profileForm.controls.company_name.errors && profileForm.controls.company_name.dirty && profileForm.controls.company_name.hasError('required')" class="danger" padding>Company is required.</span> 
+            <span *ngIf="profileForm.controls.company_name.errors && profileForm.controls.company_name.dirty && profileForm.controls.company_name.hasError('pattern')" class="danger" padding>Not a valid company.</span>
+            <ion-item no-lines>
                 <ion-input type="text" placeholder="Enter Mobile No" [formControl]="profileForm.controls['mobile']"></ion-input>
             </ion-item>
-
+            <span *ngIf="profileForm.controls.mobile.errors && profileForm.controls.mobile.dirty && profileForm.controls.mobile.hasError('required')" class="danger" padding>Mobile is required.</span> 
+            <span *ngIf="profileForm.controls.mobile.errors && profileForm.controls.mobile.dirty && profileForm.controls.mobile.hasError('minlength')" class="danger" padding>Not a valid Mobile No.</span> 
+            <span *ngIf="profileForm.controls.mobile.errors && profileForm.controls.mobile.dirty && profileForm.controls.mobile.hasError('maxlength')" class="danger" padding>Not a valid Mobile No.</span> 
+            <span *ngIf="profileForm.controls.mobile.errors && profileForm.controls.mobile.dirty && profileForm.controls.mobile.hasError('pattern')" class="danger" padding>Only No are allowed.</span>
             <button ion-button [disabled]="!profileForm.valid" type="submit" float-right ion-button round small>DONE</button>
       
           </form>

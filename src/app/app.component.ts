@@ -12,6 +12,20 @@ import { PasswordPage } from '../pages/password/password';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { ChangepasswordPage } from '../pages/changepassword/changepassword';
 import { ProfilePage } from '../pages/profile/profile';
+import { VerifyregisterPage } from '../pages/verifyregister/verifyregister';
+import { NameDesignationPage } from '../pages/name-designation/name-designation';
+import { CompanynamePage } from '../pages/companyname/companyname';
+import { StartoperationsPage } from '../pages/startoperations/startoperations';
+import { EntitytypePage } from '../pages/entitytype/entitytype';
+import { EntityactivityPage } from '../pages/entityactivity/entityactivity';
+import { PandetailsPage } from '../pages/pandetails/pandetails';
+import { EntityturnoverPage } from '../pages/entityturnover/entityturnover';
+import { LoantermPage } from '../pages/loanterm/loanterm';
+import { PreferedbankPage } from '../pages/preferedbank/preferedbank';
+import { LoanexistingPage } from '../pages/loanexisting/loanexisting';
+import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
+import { EntitylocatedPage } from '../pages/entitylocated/entitylocated';
+import { TermsPage } from '../pages/terms/terms';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +33,7 @@ import { ProfilePage } from '../pages/profile/profile';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =  HomePage
+  rootPage: any =  VerifyregisterPage
 
   pages: Array<{title: string, component: any}>;
   isLoggedIn: any;
@@ -58,7 +72,6 @@ export class MyApp {
       }else{
         this.nav.setRoot(HomePage);
       }
-
       this.pushSetup();
     });
   }

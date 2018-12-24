@@ -1,20 +1,28 @@
+<ion-header>
+        <ion-navbar color="white">
+        </ion-navbar>
+</ion-header>
 <ion-content>
     <ion-grid class="content">
-      <ion-row>
-        <ion-col>
-          <h6>Do you own a house? Is the house mortageded with any bank?</h6>
-        </ion-col>
-      </ion-row>
-  
-        <ion-item>
-            <button class="animated fadeInRight" ion-button float-right ion-button round outline (click)="doHouse()">Yes I own a house</button>
-        </ion-item>
-        <ion-item>
-            <button class="animated fadeInRight" ion-button float-right ion-button round outline (click)="doHouse()">No I don't own a house</button>
-        </ion-item>
-        <ion-item>
-            <button class="animated fadeInRight" ion-button float-right ion-button round outline (click)="doHouse()">Yes i own a house but it is mortgaged</button>
-        </ion-item>
-       
+        <ion-row>
+            <ion-col>
+                <h6>Do you own a house? Is the house mortageded with any bank?</h6>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                    <button ion-button float-right ion-button full round (click)="doHouse()">Yes I own a house</button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+                <ion-col>
+                        <button ion-button float-right ion-button full round (click)="doHouse()">No I don't own a house</button>
+                </ion-col>
+        </ion-row>
+        <ion-row>
+                <ion-col>
+                        <button ion-button float-right ion-button full round (click)="doHouse()">Yes i own a house but it is mortgaged</button>
+                </ion-col>
+        </ion-row>
     </ion-grid>
 </ion-content>

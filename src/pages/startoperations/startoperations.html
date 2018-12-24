@@ -19,11 +19,12 @@
       <ion-grid>          
           <ion-row>
             <ion-col>
-                <ion-item no-lines>
-                <ion-select [formControl]="operations.controls['year']" placeholder="Select Year">
+                <ion-item no-lines> 
+                <!-- <ion-select [formControl]="operations.controls['year']" placeholder="Select Year">
                     <ion-option value="2018">2018</ion-option>
                     <ion-option value="2017">2017</ion-option>
-                  </ion-select>
+                  </ion-select> -->
+                  <ion-datetime displayFormat="YYYY" placeholder="Select Year" [formControl]="operations.controls['year']"></ion-datetime>
                 </ion-item>
             </ion-col>
           </ion-row>  

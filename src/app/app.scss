@@ -94,3 +94,32 @@ ion-item{
     padding:10px;
     text-align: center;
 }
+
+// For TextBox Color
+    // .input-wrapper{
+    //     border-radius: 33px;
+    //     border: 1px solid grey;
+    //     margin-bottom: 10px;
+    // }
+
+    // button{
+    //     margin-top: 11px !important;
+    // }
+
+    // h6{
+    //     margin-bottom: 23px;
+    // }
+
+// For Placeholder
+.text-input::-moz-placeholder {
+    font-size:7px;
+  }
+  
+  .text-input:-ms-input-placeholder {
+    font-size:7px;
+  }
+  
+  .text-input::-webkit-input-placeholder {
+    text-indent: 0;
+    font-size:15px;
+  }

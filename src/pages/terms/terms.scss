@@ -8,4 +8,11 @@ page-terms {
             margin: 9px 10px 8px 4px !important;
         }
     }
+
+    button:disabled {
+        background: none;
+        border:1px solid grey;
+        color:grey;
+        box-shadow: none !important;
+    }
 }

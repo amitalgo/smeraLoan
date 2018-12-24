@@ -28,10 +28,10 @@ export class LoantermPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,public sharedProvider:SharedProvider,public loanApplicationProvider:LoanapplicationProvider) {
     this.loanterm = this.formBuilder.group({
-      loan_amount: ['', Validators.required],
-      capital_amount: ['', Validators.required],
+      loan_amount: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
+      capital_amount: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
       other_facility: ['', Validators.required],
-      other_facility_amount: ['', Validators.required]
+      other_facility_amount: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])]
     });
 
     this.laId=navParams.get('laId');    

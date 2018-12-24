@@ -19,8 +19,8 @@ export class NameDesignationPage {
 
   constructor(public navCtrl: NavController, private menuCtrl:MenuController ,public navParams: NavParams, private formBuilder: FormBuilder,) {
     this.namedes = this.formBuilder.group({
-      name: ['', Validators.required],
-      designation: ['', Validators.required],
+      name: ['', Validators.compose([Validators.required,Validators.pattern('^[A-Za-z ]+$')])],
+      designation: ['', Validators.compose([Validators.required,Validators.pattern('^[A-Za-z]+$')])],
     });
   }
 

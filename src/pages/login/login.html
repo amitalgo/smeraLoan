@@ -12,27 +12,27 @@
     </ion-row>   
           <form [formGroup]="login" (ngSubmit)="doLogin()" class="animated fadeInRight">
             
-              <ion-item>
-                <ion-input type="text" placeholder="Type email address here" [formControl]="login.controls['email']" ></ion-input>
-              </ion-item>
-              <span *ngIf="login.controls.email.errors && login.controls.email.dirty && login.controls.email.hasError('required')" class="danger" padding>Email is required.</span> 
+            <ion-item no-lines>
+              <ion-input type="text" placeholder="Type email address here" [formControl]="login.controls['email']" ></ion-input>
+            </ion-item>
+            <span *ngIf="login.controls.email.errors && login.controls.email.dirty && login.controls.email.hasError('required')" class="danger" padding>Email is required.</span> 
 
-              <span *ngIf="login.controls.email.errors && login.controls.email.dirty && login.controls.email.hasError('pattern')" class="danger" padding>Not a valid email.</span>
-              <ion-item>
-                <ion-input [formControl]="login.controls['password']" placeholder="Enter Password here" type="password"></ion-input>
-              </ion-item>
-
+            <span *ngIf="login.controls.email.errors && login.controls.email.dirty && login.controls.email.hasError('pattern')" class="danger" padding>Not a valid email.</span>
+            <ion-item no-lines>
+              <ion-input [formControl]="login.controls['password']" placeholder="Enter Password here" type="password"></ion-input>
+            </ion-item>
+            <span *ngIf="login.controls.password.errors && login.controls.password.dirty && login.controls.password.hasError('required')" class="danger" padding>Password is required.</span>
 
             <ion-row>
                 <ion-col>
                   <button ion-button [disabled]="!login.valid" type="submit" float-right ion-button round small>Login</button>
                 </ion-col>
-              </ion-row>
+            </ion-row>
           </form>
           <ion-row>
               <ion-col>
                   <button ion-button float-right ion-button round small (click)='openForgotPasswordForm()'>Forgot Password</button>
               </ion-col>
-            </ion-row>
+          </ion-row>
   </ion-grid>
 </ion-content>

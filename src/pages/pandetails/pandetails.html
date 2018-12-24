@@ -10,12 +10,19 @@
       </ion-col>
     </ion-row>
     <form [formGroup]="pandet" (ngSubmit)="action > 0 ? doUpdateDet() : doPanDet()" class="animated fadeInRight" >
-      <ion-item>
+      <ion-item no-lines>
         <ion-input type="text" placeholder="Enter PAN here" [formControl]="pandet.controls['pan']"></ion-input>
       </ion-item>
-      <ion-item>
+      <span *ngIf="pandet.controls.pan.errors && pandet.controls.pan.dirty && pandet.controls.pan.hasError('required')" class="danger" padding>Pan Details is required.</span> 
+
+              <span *ngIf="pandet.controls.pan.errors && pandet.controls.pan.dirty && pandet.controls.pan.hasError('pattern')" class="danger" padding>Not a valid pan.</span>
+      <ion-item no-lines>
         <ion-input type="text" placeholder="Enter GSTIN here" [formControl]="pandet.controls['gst']"></ion-input>
       </ion-item>
+
+      <span *ngIf="pandet.controls.gst.errors && pandet.controls.gst.dirty && pandet.controls.gst.hasError('required')" class="danger" padding>GST No is required.</span> 
+
+      <span *ngIf="pandet.controls.gst.errors && pandet.controls.gst.dirty && pandet.controls.gst.hasError('pattern')" class="danger" padding>Not a valid gst no.</span>
 
       <button ion-button [disabled]="!pandet.valid" type="submit" float-right ion-button round small>DONE</button>
 

@@ -55,6 +55,7 @@ export class LoanexistingPage {
         console.log(err)
         this.sharedProvider.dismissLoader();
         this.sharedProvider.presentToast("Something went wrong")
+        LoanexistingPage
     });
     
   }

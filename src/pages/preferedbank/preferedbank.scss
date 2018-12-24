@@ -16,4 +16,25 @@ page-preferedbank {
     ion-input{
         .text-input-md{ margin:7px 8px !important;}
     }
+
+    .grid{
+        padding:13px !important;
+    }
+
+    .item{
+        border:1px solid #dacfcf !important;
+        margin:6px 0px 8px 0px !important;
+        border-radius:30px !important;
+    }
+
+    .item-input-has-focus{
+        border:1px solid grey !important;
+    }
+
+    button:disabled {
+        background: none;
+        border:1px solid grey;
+        color:grey;
+        box-shadow: none !important;
+    }
 }

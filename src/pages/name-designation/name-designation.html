@@ -21,12 +21,19 @@
 
 
     <form [formGroup]="namedes" (ngSubmit)="doNameDes()" class="animated fadeInRight">
-      <ion-item>
+      <ion-item no-lines>
         <ion-input type="text" placeholder="First Name + Last Name" [formControl]="namedes.controls['name']"></ion-input>
       </ion-item>
-      <ion-item>
+      <span *ngIf="namedes.controls.name.errors && namedes.controls.name.dirty && namedes.controls.name.hasError('required')" class="danger" padding>Name is required.</span> 
+
+      <span *ngIf="namedes.controls.name.errors && namedes.controls.name.dirty && namedes.controls.name.hasError('pattern')" class="danger" padding>Not a valid name.</span>
+
+      <ion-item no-lines>
         <ion-input type="text" placeholder="Designation" [formControl]="namedes.controls['designation']"></ion-input>
       </ion-item>
+      <span *ngIf="namedes.controls.designation.errors && namedes.controls.designation.dirty && namedes.controls.designation.hasError('required')" class="danger" padding>Designation is required.</span> 
+
+      <span *ngIf="namedes.controls.designation.errors && namedes.controls.designation.dirty && namedes.controls.designation.hasError('pattern')" class="danger" padding>Not a valid designation.</span>
 
       <button ion-button [disabled]="!namedes.valid" type="submit" float-right ion-button round small>DONE</button>
 

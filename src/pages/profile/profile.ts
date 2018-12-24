@@ -25,9 +25,9 @@ export class ProfilePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,private sharedProvider:SharedProvider,private userProvider : UserProvider) {
     this.profileForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      designation: ['', Validators.required],
-      company_name: ['',Validators.required],
+      name: ['', Validators.compose([Validators.required,Validators.pattern('^[A-Za-z ]+$')])],
+      designation: ['', Validators.compose([Validators.required,Validators.pattern('^[A-Za-z]+$')])],
+      company_name: ['', Validators.compose([Validators.required,Validators.pattern('^[A-Za-z ]+$')])],
       mobile: ['', Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern('^[0-9]*$')])]
     })
     this.token = localStorage.getItem('token')
