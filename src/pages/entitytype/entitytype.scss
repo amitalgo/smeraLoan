@@ -3,6 +3,16 @@ page-entitytype {
         background-image:none !important;
     }
 
+    .item{
+        border:1px solid #dacfcf !important;
+        margin:6px 0px 8px 0px !important;
+        border-radius:30px !important;
+    }
+
+    ion-select button .button-inner,select-searchable button .button-inner{
+        border:none !important;
+    }
+
     button:disabled {
         background: none;
         border:1px solid grey;

@@ -53,19 +53,26 @@ export class ListapplicationsPage {
     // console.log("Qc is" + qc_id);
     // console.log('Lr Id is :' +lr_id);
     // console.log('La Id is:' +la_id);
-
-    this.sharedProvider.showLoader()
-    this.loanApplicationProvider.getQuestionariesAnswer(this.token,{"lrId":lr_id,"laId":la_id,"qcId":qc_id}).then(result=>{
-      this.sharedProvider.dismissLoader()
+    if(lr_id!=null && la_id!=null && qc_id!=null){
+      // this.sharedProvider.showLoader()
       this.navCtrl.setRoot(ApplicationanswerPage,{
-        "questions":result
+        "lrId":lr_id,
+        "laId":la_id,
+        "qcId":qc_id
       }); 
-    }).catch(err=>{
+    }else{
       this.sharedProvider.dismissLoader()
       this.sharedProvider.presentToast("Something went wrong!")
-      console.log('Inside Error');
-      console.log(err);
-    });
+    }
+
+    // this.loanApplicationProvider.getQuestionariesAnswer(this.token,{"lrId":lr_id,"laId":la_id,"qcId":qc_id}).then(result=>{
+      
+      
+    // }).catch(err=>{
+      
+    //   console.log('Inside Error');
+    //   console.log(err);
+    // });
   }
 
   addNewApplication(){

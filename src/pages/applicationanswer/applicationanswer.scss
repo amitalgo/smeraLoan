@@ -23,6 +23,7 @@ page-applicationanswer {
     }
     .label {
         margin: 0px;
+        white-space: normal !important;
     }
     .list {
         margin-bottom: 4px;
@@ -49,5 +50,10 @@ page-applicationanswer {
     }
     .backArr{
         color:grey;
+    }
+
+    .existIcon{
+        position:absolute;
+        right:19%;
     }
 }

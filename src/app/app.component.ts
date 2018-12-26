@@ -33,7 +33,7 @@ import { TermsPage } from '../pages/terms/terms';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any =  VerifyregisterPage
+  rootPage: any =  HomePage
 
   pages: Array<{title: string, component: any}>;
   isLoggedIn: any;
@@ -68,7 +68,7 @@ export class MyApp {
       if(this.isLoggedIn=='otp'){
         this.nav.setRoot(PasswordPage);
       }else if(this.isLoggedIn){
-        this.nav.setRoot(DashboardPage);
+        this.nav.setRoot(EntityturnoverPage);
       }else{
         this.nav.setRoot(HomePage);
       }

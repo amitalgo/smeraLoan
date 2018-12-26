@@ -40,4 +40,16 @@ export class EntityProvider {
     })
   }
 
+  getCity(token){
+    return new Promise((resolve, reject)=>{
+      this.http.get(this.apiUrl+'controller=entity&action=getcity',{
+        headers: new HttpHeaders().set('Token',token).set('Accept','application/json')
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    })
+  }
+
 }

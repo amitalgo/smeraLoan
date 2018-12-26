@@ -1,3 +1,7 @@
+<ion-header>
+  <ion-navbar color="white">
+  </ion-navbar>
+</ion-header>
 <ion-content>
     <ion-grid class="content">
       <ion-row>
@@ -5,8 +9,8 @@
           <h6>Do you already have an existing loan?</h6>
         </ion-col>
       </ion-row>
-  
-      <form [formGroup]="existingloan" (ngSubmit)="doExistingLoan()" class="animated fadeInRight">
+      
+      <form [formGroup]="existingloan" (ngSubmit)="action > 0 ? doUpdateExistingLoan() : doExistingLoan()" class="animated fadeInRight">
         <ion-item no-lines>
           <ion-input type="text" placeholder="Loan Facility" [formControl]="existingloan.controls['loan_facility']"></ion-input>
         </ion-item>
@@ -33,10 +37,10 @@
 
         <span *ngIf="existingloan.controls.bank_name.errors && existingloan.controls.bank_name.dirty && existingloan.controls.loan_amount.hasError('pattern')" class="danger" padding>Not a valid bank name.</span>
         <!-- <ion-item no-lines> -->
-            <button ion-button ion-button round float-right small (click)="noLoan()">No, i do not have any existing loan</button>
+            <button *ngIf="noExist" ion-button ion-button round float-right small (click)="noLoan()">No, i do not have any existing loan</button>
         <!-- </ion-item> -->
         <!-- <ion-item no-lines> -->
-            <button ion-button ion-button round small [disabled]="!existingloan.valid" (click)="doAddMore()" type="button">Click here to add another loan facility</button>
+          <button *ngIf="action==0" ion-button ion-button round small [disabled]="!existingloan.valid" (click)="doAddMore()" type="button">Click here to add another loan facility</button>
         <!-- </ion-item>         -->
         <button ion-button [disabled]="!existingloan.valid" type="submit" float-right ion-button round small>DONE</button>  
       </form>

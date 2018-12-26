@@ -69,6 +69,7 @@ export class EntitytypePage {
     this.sharedProvider.showLoader();
 
     var params= { "lrId":this.lrId,"laId":this.laId,"qcId":this.qcId,"entityType": this.entityType.value.entity_type}
+    // console.log('Params' + JSON.stringify(params));return;
     this.entityProvider.updateEntity(this.token,params).then(result => {
       this.sharedProvider.dismissLoader();
       this.response = result

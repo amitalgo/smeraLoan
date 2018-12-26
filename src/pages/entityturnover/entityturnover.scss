@@ -13,6 +13,10 @@ page-entityturnover {
         border:1px solid grey !important;
     }
 
+    ion-select button .button-inner,select-searchable button .button-inner{
+        border:none !important;
+    }
+
     button:disabled {
         background: none;
         border:1px solid grey;

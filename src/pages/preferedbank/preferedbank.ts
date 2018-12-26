@@ -4,6 +4,7 @@ import { SharedProvider } from '../../providers/shared/shared';
 import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
 import { FewdocumentPage } from '../fewdocument/fewdocument';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { LoanexistingPage } from '../loanexisting/loanexisting';
 
 /**
  * Generated class for the PreferedbankPage page.
@@ -85,7 +86,7 @@ export class PreferedbankPage {
     this.loanApplicationProvider.updateLoanApplication(this.token,this.data).then(result => {
       this.sharedProvider.dismissLoader();
       this.response = result
-      this.navCtrl.push(FewdocumentPage);
+      this.navCtrl.push(LoanexistingPage);
     }).catch(err => {
       console.log(err)
       this.sharedProvider.dismissLoader();

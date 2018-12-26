@@ -27,14 +27,15 @@
             <button ion-item (click)="toggleSection(i)" detail-none class="trans" [ngClass]="{'section-active': item.open, 'section': !item.open}">
               <ion-icon medium  class="toggleIcon" item-right name="ios-arrow-forward" *ngIf="!item.open"></ion-icon>
               <ion-icon medium class="toggleIcon" item-right name="ios-arrow-down" *ngIf="item.open"></ion-icon>
-              <ion-icon small style="color:grey" (click)="editQuestion(item.page,item.lrId,item.laId,item.qcId)" item-right name="ios-create" md="md-create"></ion-icon>
+              <ion-icon *ngIf="item.children || item.answer" small style="color:grey" (click)="editQuestion('',item.page,item.lrId,item.laId,item.qcId)" item-right name="ios-create" md="md-create"></ion-icon>
+              <ion-icon *ngIf="item.existLoan" small style="color:grey" item-right name="ios-create" md="md-create"></ion-icon>
                 {{ item.question }}
             </button>
 
             <ion-list *ngIf="item.answer && item.open" no-lines>
               <ion-list-header no-padding>
                 <ion-item text-wrap detail-none ion-item>
-                    <p text-lowercase>{{ item.answer }}</p>
+                    <p>{{ item.answer }}</p>
                 </ion-item>
               </ion-list-header>
             </ion-list>
@@ -44,11 +45,24 @@
               <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>       
                 <!-- Direct Add Button as Fallback -->
                 <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
-                  <p text-lowercase>{{ child }}</p>
+                  <p>{{ child }}</p>
                 </ion-item>
               </ion-list-header>
             </ion-list>
-            
+
+            <!-- For Existing Loan -->
+            <ion-list *ngIf="item.existLoan && item.open" no-lines>
+                <ion-list-header no-padding>       
+                    <!-- Direct Add Button as Fallback -->
+                    <ion-item *ngFor="let child of item.existLoan; let j = index" ion-item detail-none class="child-item" text-wrap>
+                      <ion-icon class="existIcon" (click)="editQuestion(j,item.page,item.lrId,item.laId,item.qcId)" float-right name="ios-create" md="md-create"></ion-icon>
+                      <p>Bank Name : {{ child.bank_name }}</p>
+                      <p>Interest : {{ child.interest }}</p>
+                      <p>Other Fac : {{ child.other_fac }}</p>
+                      <p>Loan Amount : {{ child.loan_amount }}</p>
+                    </ion-item>
+                  </ion-list-header>
+            </ion-list>            
           </ion-list-header>
         </ion-list>
   </ion-content>

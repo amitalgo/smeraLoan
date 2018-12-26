@@ -58,7 +58,7 @@ export class EntityactivityPage {
         this.sharedProvider.dismissLoader()
         this.response=result
         this.action=1
-        console.log(this.response.industry);
+        // console.log('Industry is:' + JSON.stringify(this.response));
         this.entityactivity.controls['activity'].setValue(this.response.activity)
         this.entityactivity.controls['industry'].setValue(this.response.industry)
         // this.navCtrl.popToRoot({ animate: true, direction: 'back' }) 

@@ -14,8 +14,13 @@
         <ion-textarea [formControl]="entitylocated.controls['address']" placeholder="Address"></ion-textarea>
       </ion-item>
       <span *ngIf="entitylocated.controls.address.errors && entitylocated.controls.address.dirty && entitylocated.controls.address.hasError('required')" class="danger" padding>Address is required.</span> 
-      <ion-item no-lines>
+      <!-- <ion-item no-lines>
         <ion-input type="text" placeholder="City" [formControl]="entitylocated.controls['city']"></ion-input>
+      </ion-item> -->
+      <ion-item no-lines>
+        <ion-select [formControl]="entitylocated.controls['city']" placeholder="Select city">
+            <ion-option value="{{ city.city_name }}" *ngFor="let city of cities">{{ city.city_name }}</ion-option>
+        </ion-select>
       </ion-item>
       <span *ngIf="entitylocated.controls.city.errors && entitylocated.controls.city.dirty && entitylocated.controls.city.hasError('required')" class="danger" padding>City is required.</span>
       <ion-item no-lines>

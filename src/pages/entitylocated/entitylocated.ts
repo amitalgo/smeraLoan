@@ -27,6 +27,7 @@ export class EntitylocatedPage {
   lrId : any;
   action : any = 0;
   token:any;
+  cities:any;
 
   constructor(public navCtrl: NavController,public sharedProvider:SharedProvider,public loanApplicationProvider:LoanapplicationProvider ,public navParams: NavParams,private entityProvider:EntityProvider,private formBuilder: FormBuilder,) {
     this.entitylocated = this.formBuilder.group({
@@ -38,10 +39,20 @@ export class EntitylocatedPage {
     this.qcId=navParams.get('qcId');
     this.lrId=navParams.get('lrId');
     this.token=localStorage.getItem('token');
+    this.getCity();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EntitylocatedPage');
+  }
+
+  getCity(){
+    this.entityProvider.getCity(this.token).then(result=>{
+      this.cities = result  
+    }).catch(err=>{
+      console.log('Inside Error');
+      console.log(err);
+    });
   }
 
   ionViewWillEnter () {

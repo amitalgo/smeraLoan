@@ -88,4 +88,16 @@ export class LoanapplicationProvider {
     })    
   }
 
+  allFinancialYears(token){
+    return new Promise((resolve, reject)=>{
+      this.http.get(this.apiUrl+'controller=loanApplication&action=getfinancialyr',{
+        headers: new HttpHeaders().set('Accept','application/json').set('Token', token)
+      }).subscribe(res=>{
+        resolve(res)
+      },(err)=>{
+        reject(err)
+      })
+    })  
+  }
+
 }
