@@ -56,7 +56,7 @@
       </ion-grid>  
       <ion-row>
         <ion-col>
-            <button ion-button [disabled]="!entityturnover.valid" (click)="doAddMore()" type="button" float-right ion-button round small>Add more</button>
+            <button *ngIf="noExist" ion-button [disabled]="!entityturnover.valid" (click)="doAddMore()" type="button" float-right ion-button round small>Add more</button>
         </ion-col>
       </ion-row> 
       

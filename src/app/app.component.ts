@@ -68,7 +68,7 @@ export class MyApp {
       if(this.isLoggedIn=='otp'){
         this.nav.setRoot(PasswordPage);
       }else if(this.isLoggedIn){
-        this.nav.setRoot(EntityturnoverPage);
+        this.nav.setRoot(DashboardPage);
       }else{
         this.nav.setRoot(HomePage);
       }

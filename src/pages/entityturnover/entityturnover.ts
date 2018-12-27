@@ -26,12 +26,18 @@ export class EntityturnoverPage {
   lrId : any;
   action : any = 0;
   finYears :any;
-  turnYear1 : any = [];
-  turnYear2 : any = [];
-  turnYear3 : any = [];
-  patYear1 : any = [];
-  patYear2 : any = [];
-  patYear3 : any = [];
+  turnYear1 : any = [''];
+  turnYear2 : any = [''];
+  turnYear3 : any = [''];
+  patYear1 : any = [''];
+  patYear2 : any = [''];
+  patYear3 : any = [''];
+  turnData : any;
+  patData : any;
+  index : any;
+  noExist : any = true;
+  a : any = [];
+  b:any =[];
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,public sharedProvider:SharedProvider,public loanApplicationProvider:LoanapplicationProvider,) {
@@ -45,6 +51,7 @@ export class EntityturnoverPage {
     this.laId=navParams.get('laId');    
     this.qcId=navParams.get('qcId');
     this.lrId=navParams.get('lrId');
+    this.index=navParams.get('index')
     this.token=localStorage.getItem('token');
   }
 
@@ -63,14 +70,24 @@ export class EntityturnoverPage {
 
   ionViewWillEnter () {
     this.getFinancialYear();
-    if(this.lrId!=null && this.laId!=null && this.qcId!=null){
+    if(this.lrId!=null && this.laId!=null && this.qcId!=null && this.index!=null){
+      this.noExist=false
       this.sharedProvider.showLoader()
       this.loanApplicationProvider.getLoanApplicationById(this.token,{"lrId":this.lrId,"laId":this.laId,"qcId":this.qcId}).then(result=>{
         this.sharedProvider.dismissLoader()
         this.response=result
         this.action=1
-        this.entityturnover.controls['turnOver'].setValue(this.response.turn_over)
-        this.entityturnover.controls['pat'].setValue(this.response.pat)
+        var str1= this.response.turn_over;
+        var turn = [];
+        var str2=this.response.pat
+        if(str1!='' && str2!=''){
+          this.a=str1.split(',');
+          this.b=str2.split(',');
+          this.entityturnover.controls['turnOver'].setValue(this.a[this.index])
+          this.entityturnover.controls['turnoverYr'].setValue(this.index);
+          this.entityturnover.controls['pat'].setValue(this.b[this.index])  
+          this.entityturnover.controls['pat_year'].setValue(this.index)
+        }        
       }).catch(err=>{
         this.sharedProvider.dismissLoader()
         this.sharedProvider.presentToast("Something went wrong!")
@@ -84,29 +101,33 @@ export class EntityturnoverPage {
     
     // For Setting TurnOver Value
     if(this.entityturnover.value.turnoverYr==0){
-      // this.entityturnover.value.turnOver=this.entityturnover.value.turnOver+','+',';
       this.turnYear1=[];
       this.turnYear1.push(this.entityturnover.value.turnOver);
     }else if(this.entityturnover.value.turnoverYr==1){
-      // this.entityturnover.value.turnOver=','+this.entityturnover.value.turnOver+',';
       this.turnYear2=[];
       this.turnYear2.push(this.entityturnover.value.turnOver);
     }else if(this.entityturnover.value.turnoverYr==2){
-      // this.entityturnover.value.turnOver=','+','+this.entityturnover.value.turnOver;
       this.turnYear3=[];
       this.turnYear3.push(this.entityturnover.value.turnOver);
     }
 
-    // this.turnOverData=this.entityturnover.value.turnOver
-    // this.patData=this.entityturnover.value.pat
-    
-    console.log('Turn Years : ' +this.turnYear1);
-    // console.log(this.patData);
-    return;
+    // For Setting Pat Value
+    if(this.entityturnover.value.pat_year==0){
+      this.patYear1=[];
+      this.patYear1.push(this.entityturnover.value.pat);
+    }else if(this.entityturnover.value.pat_year==1){
+      this.patYear2=[];
+      this.patYear2.push(this.entityturnover.value.pat);
+    }else if(this.entityturnover.value.pat_year==2){
+      this.patYear3=[];
+      this.patYear3.push(this.entityturnover.value.pat);
+    }
+
+    this.turnData = this.turnYear1.concat(this.turnYear2,this.turnYear3);
+    this.patData = this.patYear1.concat(this.patYear2,this.patYear3);
+
     localStorage.setItem('salesTurnOver',this.entityturnover.value.turnOver);
-    localStorage.setItem('salesEntityYr',this.entityturnover.value.turnoverYr);
     localStorage.setItem('salesTurnPat',this.entityturnover.value.pat);
-    localStorage.setItem('salesPatYr',this.entityturnover.value.pat_year);
     this.navCtrl.push(LoanrequirementPage);
   }
 
@@ -122,20 +143,34 @@ export class EntityturnoverPage {
     }else if(this.entityturnover.value.turnoverYr==2){
       this.turnYear3=[];
       this.turnYear3.push(this.entityturnover.value.turnOver);
-    }    
+    }
+    
+    // For Setting Pat Value
+    if(this.entityturnover.value.pat_year==0){
+      this.patYear1=[];
+      this.patYear1.push(this.entityturnover.value.pat);
+    }else if(this.entityturnover.value.pat_year==1){
+      this.patYear2=[];
+      this.patYear2.push(this.entityturnover.value.pat);
+    }else if(this.entityturnover.value.pat_year==2){
+      this.patYear3=[];
+      this.patYear3.push(this.entityturnover.value.pat);
+    }
+    
     this.entityturnover.reset()
   }
 
   doUpdateEntityTurnover(){
     console.log("Update Sales Turn Over Function");
+    this.a[this.entityturnover.value.turnoverYr]=this.entityturnover.value.turnOver;
+    this.b[this.entityturnover.value.pat_year]=this.entityturnover.value.pat;
     this.sharedProvider.showLoader();
-
-    var params= { "lrId":this.lrId,"laId":this.laId,"qcId":this.qcId,"salesTurnOver": this.entityturnover.value.turnOver,"salesTurnPat":this.entityturnover.value.pat}
+    var params= { "lrId":this.lrId,"laId":this.laId,"qcId":this.qcId,"salesTurnOver": (this.a).toString(),"salesTurnPat":(this.b).toString()}
     this.loanApplicationProvider.updateLoanApplication(this.token,params).then(result => {
       this.sharedProvider.dismissLoader();
       this.response = result
-      localStorage.setItem('salesTurnOver',this.entityturnover.value.turnOver);
-      localStorage.setItem('salesTurnPat',this.entityturnover.value.pat);
+      localStorage.setItem('salesTurnOver',this.a);
+      localStorage.setItem('salesTurnPat',this.b);
       this.sharedProvider.presentToast(this.response.message)
       this.navCtrl.popToRoot({ animate: true, direction: 'back',duration: 500  }) 
     }).catch(err => {

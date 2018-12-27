@@ -27,7 +27,7 @@
             <button ion-item (click)="toggleSection(i)" detail-none class="trans" [ngClass]="{'section-active': item.open, 'section': !item.open}">
               <ion-icon medium  class="toggleIcon" item-right name="ios-arrow-forward" *ngIf="!item.open"></ion-icon>
               <ion-icon medium class="toggleIcon" item-right name="ios-arrow-down" *ngIf="item.open"></ion-icon>
-              <ion-icon *ngIf="item.children || item.answer" small style="color:grey" (click)="editQuestion('',item.page,item.lrId,item.laId,item.qcId)" item-right name="ios-create" md="md-create"></ion-icon>
+              <ion-icon *ngIf="item.children || item.answer " small style="color:grey" (click)="editQuestion('',item.page,item.lrId,item.laId,item.qcId)" item-right name="ios-create" md="md-create"></ion-icon>
               <ion-icon *ngIf="item.existLoan" small style="color:grey" item-right name="ios-create" md="md-create"></ion-icon>
                 {{ item.question }}
             </button>
@@ -47,6 +47,15 @@
                 <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap>
                   <p>{{ child }}</p>
                 </ion-item>
+
+                <!-- For Sales TurnOver -->
+                <div *ngIf="child.children">
+                  <ion-item *ngFor="let child2 of child.children; let j = index" ion-item detail-none class="child-item" text-wrap>
+                    <ion-icon class="existIcon" (click)="editQuestion(j,item.page,item.lrId,item.laId,item.qcId)" float-right name="ios-create" md="md-create"></ion-icon>
+                    <p>Turn Over : {{ child2.turnover }}</p>
+                    <p>Pat : {{ child2.pat }}</p>
+                  </ion-item>
+                </div>
               </ion-list-header>
             </ion-list>
 
