@@ -15,8 +15,11 @@
       
         <ion-item class="activity" no-lines>
         <ion-select [formControl]="entityactivity.controls['activity']" placeholder="Select Activity">
-            <ion-option value="activity_1">Activity 1</ion-option>
-            <ion-option value="activity_2">Activity 2</ion-option>
+            <ion-option value="Trading">Trading</ion-option>
+            <ion-option value="Manufacturing">Manufacturing</ion-option>
+            <ion-option value="Services">Services</ion-option>
+            <ion-option value="Investments">Investments</ion-option>
+            <ion-option value="Real Estate">Real Estate</ion-option>
           </ion-select>
         </ion-item>
 
@@ -33,6 +36,7 @@
           itemTextField="subindustry_name"
           [canSearch]="true"
           (onChange)="userChanged($event)"
+          [hasVirtualScroll]="true"
           >
           </select-searchable>
         </ion-item>

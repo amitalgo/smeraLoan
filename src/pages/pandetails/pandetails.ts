@@ -52,7 +52,7 @@ export class PandetailsPage {
         this.response=result
         this.action=1
         this.pandet.controls['pan'].setValue(this.response.entity_PAN)
-        this.pandet.controls['gst'].setValue(this.response.tan)
+        this.pandet.controls['gst'].setValue(this.response.GSTIN)
         // this.navCtrl.popToRoot({ animate: true, direction: 'back' }) 
       }).catch(err=>{
         this.sharedProvider.dismissLoader()

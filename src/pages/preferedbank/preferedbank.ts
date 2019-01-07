@@ -5,6 +5,7 @@ import { LoanapplicationProvider } from '../../providers/loanapplication/loanapp
 import { FewdocumentPage } from '../fewdocument/fewdocument';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { LoanexistingPage } from '../loanexisting/loanexisting';
+import { OwnhousePage } from '../ownhouse/ownhouse';
 
 /**
  * Generated class for the PreferedbankPage page.
@@ -83,10 +84,11 @@ export class PreferedbankPage {
     this.data['otherFacType']=localStorage.getItem('otherFacType');
     this.data['otherFacAmt']=localStorage.getItem('otherFacAmt')
     this.data['preferedBank']=localStorage.getItem('preferedBank');
+    
     this.loanApplicationProvider.updateLoanApplication(this.token,this.data).then(result => {
       this.sharedProvider.dismissLoader();
       this.response = result
-      this.navCtrl.push(LoanexistingPage);
+      this.navCtrl.push(OwnhousePage);
     }).catch(err => {
       console.log(err)
       this.sharedProvider.dismissLoader();

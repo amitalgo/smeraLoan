@@ -13,6 +13,7 @@ import { IOSFilePicker } from '@ionic-native/file-picker';
 import { DocumentPicker } from '@ionic-native/document-picker';
 import { HttpModule } from '@angular/http';
 import { SelectSearchableModule } from 'ionic-select-searchable';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -154,6 +155,7 @@ import { Push } from '@ionic-native/push';
     LoanapplicationProvider,
     SubmitdocumentProvider,
     PasswordValidationProvider,
+    InAppBrowser
   ]
 })
 export class AppModule {}

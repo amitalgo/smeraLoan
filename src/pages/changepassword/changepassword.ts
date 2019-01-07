@@ -4,6 +4,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { PasswordValidationProvider } from '../../providers/password-validation/password-validation';
 import { SharedProvider } from '../../providers/shared/shared';
 import { UserProvider } from '../../providers/user/user';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the ChangepasswordPage page.
@@ -53,6 +54,10 @@ export class ChangepasswordPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangepasswordPage');
+  }
+
+  goBack(){
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

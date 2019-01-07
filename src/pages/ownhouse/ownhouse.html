@@ -11,17 +11,17 @@
         </ion-row>
         <ion-row>
             <ion-col>
-                    <button ion-button float-right ion-button full round (click)="doHouse()">Yes I own a house</button>
+                    <button ion-button float-right ion-button full round (click)="doHouse('yes')">Yes I own a house</button>
             </ion-col>
         </ion-row>
         <ion-row>
                 <ion-col>
-                        <button ion-button float-right ion-button full round (click)="doHouse()">No I don't own a house</button>
+                        <button ion-button float-right ion-button full round (click)="doHouse('no')">No I don't own a house</button>
                 </ion-col>
         </ion-row>
         <ion-row>
                 <ion-col>
-                        <button ion-button float-right ion-button full round (click)="doHouse()">Yes i own a house but it is mortgaged</button>
+                        <button ion-button float-right ion-button full round (click)="doHouse('yes_but_mortgaged')">Yes i own a house but it is mortgaged</button>
                 </ion-col>
         </ion-row>
     </ion-grid>

@@ -14,6 +14,8 @@ import { PreferedbankPage } from '../preferedbank/preferedbank';
 import { LoanexistingPage } from '../loanexisting/loanexisting';
 import { SharedProvider } from '../../providers/shared/shared';
 import { LoanapplicationProvider } from '../../providers/loanapplication/loanapplication';
+import { OwnhousePage } from '../ownhouse/ownhouse';
+import { SubmitdocumentPage } from '../submitdocument/submitdocument';
 /**
  * Generated class for the ApplicationanswerPage page.
  *
@@ -40,7 +42,9 @@ export class ApplicationanswerPage {
     'EntityturnoverPage' : EntityturnoverPage,
     'LoantermPage' : LoantermPage,
     'PreferedbankPage' : PreferedbankPage,
-    'LoanexistingPage' : LoanexistingPage
+    'LoanexistingPage' : LoanexistingPage,
+    'OwnhousePage' : OwnhousePage,
+    'SubmitdocumentPage' : SubmitdocumentPage
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: Http,private menuCtrl:MenuController,public sharedProvider:SharedProvider,public loanApplicationProvider:LoanapplicationProvider) {

@@ -33,8 +33,8 @@ export class LoanexistingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,private loanApplicationProvider:LoanapplicationProvider,public sharedProvider:SharedProvider) {
     this.existingloan = this.formBuilder.group({
       loan_facility: [this.existingloan, Validators.required],
-      loan_amount: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
-      interest: ['', Validators.required],
+      loan_amount: ['', Validators.compose([Validators.required,Validators.pattern('^\\d{1,2}(\\.\\d{1,2})?$')])],
+      interest: ['', Validators.compose([Validators.required,Validators.pattern('^\\d{1,2}(\\.\\d{1,2})?$')])],
       bank_name: ['', Validators.required],
     });
 

@@ -15,20 +15,30 @@
       </ion-item>
       <span *ngIf="entitylocated.controls.address.errors && entitylocated.controls.address.dirty && entitylocated.controls.address.hasError('required')" class="danger" padding>Address is required.</span> 
       <!-- <ion-item no-lines>
-        <ion-input type="text" placeholder="City" [formControl]="entitylocated.controls['city']"></ion-input>
-      </ion-item> -->
-      <ion-item no-lines>
-        <ion-select [formControl]="entitylocated.controls['city']" placeholder="Select city">
+        <ion-select [formControl]="entitylocated.controls['city']" placeholder="Select city" interface="popover">
             <ion-option value="{{ city.city_name }}" *ngFor="let city of cities">{{ city.city_name }}</ion-option>
         </ion-select>
-      </ion-item>
+      </ion-item> -->
+      <ion-item class="city" no-lines> 
+        <select-searchable [formControl]="entitylocated.controls['city']" placeholder="Select City"
+        item-content
+        [(ngModel)]="indus"
+        [items]="cities"
+        itemValueField="city_name"
+        itemTextField="city_name"
+        [canSearch]="true"
+        (onChange)="userChanged($event)"
+        [hasVirtualScroll]="true"
+        >
+        </select-searchable>
+       </ion-item>
       <span *ngIf="entitylocated.controls.city.errors && entitylocated.controls.city.dirty && entitylocated.controls.city.hasError('required')" class="danger" padding>City is required.</span>
       <ion-item no-lines>
         <ion-input type="text" placeholder="Pincode" [formControl]="entitylocated.controls['pincode']"></ion-input>
       </ion-item>
       <span *ngIf="entitylocated.controls.pincode.errors && entitylocated.controls.pincode.dirty && entitylocated.controls.pincode.hasError('required')" class="danger" padding>Pincode is required.</span> 
 
-      <span *ngIf="entitylocated.controls.pincode.errors && entitylocated.controls.pincode.dirty && entitylocated.controls.pincode.hasError('pattern')" class="danger" padding>Not a valid pincode.</span>
+      <span *ngIf="entitylocated.controls.pincode.errors && entitylocated.controls.pincode.dirty && entitylocated.controls.pincode.hasError('pattern')" class="danger" padding>Not a valid 6 digit pincode.</span>
         <button ion-button [disabled]="!entitylocated.valid" type="submit" float-right ion-button round small>DONE</button>
     </form>
   </ion-grid>

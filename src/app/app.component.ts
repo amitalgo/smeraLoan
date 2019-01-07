@@ -26,6 +26,7 @@ import { LoanexistingPage } from '../pages/loanexisting/loanexisting';
 import { SubmitdocumentPage } from '../pages/submitdocument/submitdocument';
 import { EntitylocatedPage } from '../pages/entitylocated/entitylocated';
 import { TermsPage } from '../pages/terms/terms';
+import { OwnhousePage } from '../pages/ownhouse/ownhouse';
 
 @Component({
   templateUrl: 'app.html'
@@ -50,8 +51,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Profile', component: ProfilePage },
-      { title: 'Application Status', component: DashboardPage },
+      { title: 'Dashboard', component: DashboardPage },
+      { title: 'Profile', component: ProfilePage },      
       // { title: 'Notifications', component: ListPage },
       { title: 'Change Password', component: ChangepasswordPage }
     ];

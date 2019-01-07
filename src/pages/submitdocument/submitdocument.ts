@@ -27,6 +27,11 @@ export class SubmitdocumentPage {
   public response : any;
   public formValue : any;
 
+  laId : any;
+  qcId : any;
+  lrId : any;
+  token:any;
+
   public identityy:string;
   public addresss : string;
   public financiall : string;
@@ -34,6 +39,11 @@ export class SubmitdocumentPage {
   public typee :string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public viewCtrl: ViewController,private formBuilder: FormBuilder,public file: File, public fileChooser: FileChooser,private platform: Platform, public filePicker: IOSFilePicker, public documentPicker: DocumentPicker,public sharedService: SharedProvider,public submitDocument:SubmitdocumentProvider) {
+
+    this.laId=navParams.get('laId');    
+    this.qcId=navParams.get('qcId');
+    this.lrId=navParams.get('lrId');
+    this.token=localStorage.getItem('token');
 
   }
 
@@ -128,7 +138,11 @@ export class SubmitdocumentPage {
   }
 
   doProceed(){
-    this.navCtrl.push(TermsPage);
+    if(this.lrId!=null && this.laId!=null && this.qcId!=null){
+      this.navCtrl.popToRoot({ animate: true, direction: 'back',duration: 500  }) 
+    }else{
+      this.navCtrl.push(TermsPage);
+    }
   }
 
   dismiss(){

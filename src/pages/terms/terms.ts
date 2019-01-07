@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ThankyouPage } from '../thankyou/thankyou';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the TermsPage page.
@@ -21,7 +22,7 @@ export class TermsPage {
   response : any;
   isenabled:boolean=false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,private inAppBrowser:InAppBrowser) {
     this.terms = this.formBuilder.group({
       termVal: ['', Validators.required]
     });
@@ -37,7 +38,11 @@ export class TermsPage {
     }else{
       this.isenabled=false; 
     }
-}
+  }
+
+  redirect(){
+    this.inAppBrowser.create("https://www.smeraonline.com/privacy-policy.php/");
+  }
 
   doContinue(){
     this.navCtrl.push(ThankyouPage);

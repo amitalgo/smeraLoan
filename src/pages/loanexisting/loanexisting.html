@@ -27,7 +27,9 @@
         <ion-item no-lines>
             <ion-input type="text" placeholder="Interest Rate" [formControl]="existingloan.controls['interest']"></ion-input>
         </ion-item>
-        <span *ngIf="existingloan.controls.interest.errors && existingloan.controls.interest.dirty && existingloan.controls.loan_amount.hasError('required')" class="danger" padding>Interest is required.</span> 
+        <span *ngIf="existingloan.controls.interest.errors && existingloan.controls.interest.dirty && existingloan.controls.interest.hasError('required')" class="danger" padding>Interest is required.</span>
+
+        <span *ngIf="existingloan.controls.interest.errors && existingloan.controls.interest.dirty && existingloan.controls.interest.hasError('pattern')" class="danger" padding>Not a valid Interest Rate.</span>
 
         <span *ngIf="existingloan.controls.interest.errors && existingloan.controls.interest.dirty && existingloan.controls.loan_amount.hasError('pattern')" class="danger" padding>Not a valid interest.</span>
         <ion-item no-lines>

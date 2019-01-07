@@ -23,7 +23,7 @@ export class RegisterPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,private viewCtrl:ViewController,private sharedProvider:SharedProvider,private userProvider: UserProvider) {
     this.register = this.formBuilder.group({
-      email: ['',Validators.compose([Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
+      email: ['',Validators.compose([Validators.required,Validators.pattern('^[a-z0-9_.+-]+@[a-z0-9-]+.[a-z0-9-.]+$')])],
       mobile: ['', Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern('^[0-9]*$')])]
     });
   }

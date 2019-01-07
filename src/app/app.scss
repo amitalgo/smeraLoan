@@ -42,7 +42,7 @@
 ion-select,.select-searchable{
     max-width: 100% !important;
 }
-.select-md .select-icon,.select-searchable-icon {
+.select .select-icon,.select-searchable-icon {
     position: absolute;
     right: 30px;
     width:12px;
@@ -51,7 +51,7 @@ ion-select,.select-searchable{
 ion-select{
     button{
         .button-inner{
-            border: 1px solid color($colors,primary);
+            border: 1px solid color($colors,select);
             border-radius: 34px;
         }   
     }    
@@ -60,13 +60,14 @@ ion-select{
 select-searchable{
     button{
         .button-inner{
-            border: 1px solid color($colors,primary);
+            border: 1px solid color($colors,select);
             border-radius: 34px;
         }   
     }
     .select-searchable-value{
         padding-left :0 !important;
     }    
+
 }
 
 ion-item{
@@ -123,3 +124,11 @@ ion-item{
     text-indent: 0;
     font-size:15px;
   }
+
+  @media (max-width:320px) {
+      
+  }
+
+.alert-md .alert-radio-label{
+    white-space: inherit !important;
+}

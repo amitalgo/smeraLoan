@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 import { NameDesignationPage } from '../name-designation/name-designation';
+import { PasswordValidationProvider } from '../../providers/password-validation/password-validation';
 
 /**
  * Generated class for the PasswordPage page.
@@ -24,6 +25,9 @@ export class PasswordPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private formBuilder: FormBuilder,) {
     this.submit = this.formBuilder.group({
       password: ['', Validators.required],
+      confirmPassword: ['', Validators.compose([Validators.required])]
+    },{
+      validator: PasswordValidationProvider.MatchPassword
     });
   }
 

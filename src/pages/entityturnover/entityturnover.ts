@@ -42,9 +42,9 @@ export class EntityturnoverPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,private formBuilder: FormBuilder,public sharedProvider:SharedProvider,public loanApplicationProvider:LoanapplicationProvider,) {
     this.entityturnover = this.formBuilder.group({
-      turnOver: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
+      turnOver: ['', Validators.compose([Validators.required,Validators.pattern('^\\d{1,2}(\\.\\d{1,2})?$')])],
       turnoverYr: ['', Validators.required],
-      pat: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
+      pat: ['', Validators.compose([Validators.required,Validators.pattern('^\\d{1,2}(\\.\\d{1,2})?$')])],
       pat_year: ['', Validators.required],
     });
 
@@ -126,8 +126,8 @@ export class EntityturnoverPage {
     this.turnData = this.turnYear1.concat(this.turnYear2,this.turnYear3);
     this.patData = this.patYear1.concat(this.patYear2,this.patYear3);
 
-    localStorage.setItem('salesTurnOver',this.entityturnover.value.turnOver);
-    localStorage.setItem('salesTurnPat',this.entityturnover.value.pat);
+    localStorage.setItem('salesTurnOver',this.turnData);
+    localStorage.setItem('salesTurnPat',this.patData);
     this.navCtrl.push(LoanrequirementPage);
   }
 
